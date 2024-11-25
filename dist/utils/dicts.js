@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.int_to_dayOfWeek = void 0;
-exports.int_to_dayOfWeek = {
+export const int_to_dayOfWeek = {
     0: "Sunday",
     1: "Monday",
     2: "Tuesday",
