@@ -9,7 +9,7 @@
 </head>
 <body>
     <div id="root" class="main_wrapper flex f-center">
-        <article class="todo_sheet">
+        <article class="todo_sheet flex f-column">
             <nav class="date_navigation flex f-row">
                 <button class="dayback_button">←</button>
                 <div class="nav_date">
@@ -18,6 +18,17 @@
                 </div>
                 <button class="dayforward_button">→</button>
             </nav>
+            <section class="tasklist_section">
+                List of tasks
+            </section>
+            <footer class="counter_addtask">
+                <span class="taskcounter">
+                    4 tasks
+                </span>
+                <button class="addtask_button">
+                    ADD NEW <span class="add_plussign">+</span>
+                </button>
+            </footer>
         </article>
     </div>
     <script src="./dist/main.js" type="module"></script>
