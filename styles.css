@@ -25,6 +25,8 @@ html, body, .main_wrapper {
     display: flex;
 }
 
+
+
 .main_wrapper {
     background: linear-gradient(85deg, rgba(254,205,171,1) 0%, rgba(250,184,145,1) 100%);
 }
@@ -42,8 +44,9 @@ html, body, .main_wrapper {
     flex-grow: 1;
 }
 
-.date_navigation{
+.date_navigation, .counter_addtask{
     height: 50px;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
 }
+
