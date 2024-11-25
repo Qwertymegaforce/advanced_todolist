@@ -1,5 +1,5 @@
-let day_of_week = document.getElementById('weekday') as HTMLSpanElement;
+let day_of_week_DOM = document.getElementById('weekday') as HTMLSpanElement;
 
-let date = document.getElementById('date') as HTMLSpanElement;
+let date_DOM = document.getElementById('date') as HTMLSpanElement;
 
-export {day_of_week, date}
+export {day_of_week_DOM, date_DOM}
