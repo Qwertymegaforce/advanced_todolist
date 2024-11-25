@@ -1,0 +1,38 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html, body, .main_wrapper {
+    height: 100%;
+}
+
+.f-row {
+    flex-direction: row;
+}
+
+.f-center {
+    align-items: center;
+    justify-content: center;
+}
+
+.f-column {
+    flex-direction: column;
+}
+
+.flex{
+    display: flex;
+}
+
+.main_wrapper {
+    background: linear-gradient(85deg, rgba(254,205,171,1) 0%, rgba(250,184,145,1) 100%);
+}
+
+.todo_sheet{
+    background-color: white;
+    height: 80%;
+    width: 300px;
+    box-shadow: 15px 10px 10px rgba(0, 0, 0, 0.229);
+    border-radius: 5px;
+}
