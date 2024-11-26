@@ -1,2 +1,3 @@
+import { today_date_obj } from "./utils/vars.js";
 import { setDayOfWeek } from "./utils/functions.js";
-setDayOfWeek(2);
+setDayOfWeek(today_date_obj);
