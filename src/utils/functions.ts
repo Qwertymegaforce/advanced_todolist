@@ -10,9 +10,9 @@ export function setDayOfWeek (date: Date): void {
 export function setDate (date: Date): void {
     let int_month = date.getMonth()
     let int_date = date.getDate()
-    let current_mont_string = int_to_month_string[int_month as keyof typeof int_to_month_string]
+    let current_month_string = int_to_month_string[int_month as keyof typeof int_to_month_string]
     let numeral_ending = determineNumeralEnding(int_date)
-    let resulted_string = `${current_mont_string} ${int_date}${numeral_ending}`
+    let resulted_string = `${current_month_string} ${int_date}${numeral_ending}`
     date_DOM.textContent = resulted_string
 }
 

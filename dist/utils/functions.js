@@ -8,9 +8,9 @@ export function setDayOfWeek(date) {
 export function setDate(date) {
     let int_month = date.getMonth();
     let int_date = date.getDate();
-    let current_mont_string = int_to_month_string[int_month];
+    let current_month_string = int_to_month_string[int_month];
     let numeral_ending = determineNumeralEnding(int_date);
-    let resulted_string = `${current_mont_string} ${int_date}${numeral_ending}`;
+    let resulted_string = `${current_month_string} ${int_date}${numeral_ending}`;
     date_DOM.textContent = resulted_string;
 }
 function determineNumeralEnding(number_to_determine) {
