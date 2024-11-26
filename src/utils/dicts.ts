@@ -1,4 +1,4 @@
-export const int_to_dayOfWeek = {
+export const int_to_day_of_week = {
     0: "Sunday",
     1: "Monday",
     2: "Tuesday",
