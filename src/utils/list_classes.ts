@@ -1,4 +1,4 @@
-export class ToDoCreationForm {
+export class FormConstructor {
     
     private content!: HTMLDivElement;
 
