@@ -9,7 +9,6 @@ export function displayToDoCreationForm() {
     task_list_DOM.appendChild(form);
 }
 function createToDoForm() {
-    let formWrapper = new ToDoCreationForm();
-    // To Do: Поменять return! 
-    return document.createElement('div');
+    let form = new ToDoCreationForm().createForm();
+    return form;
 }

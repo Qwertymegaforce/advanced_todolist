@@ -14,7 +14,6 @@ export function displayToDoCreationForm (): void {
 }
 
 function createToDoForm(): HTMLDivElement {
-    let formWrapper = new ToDoCreationForm()
-    // To Do: Поменять return! 
-    return document.createElement('div')
+    let form = new ToDoCreationForm().createForm()
+    return form
 }
