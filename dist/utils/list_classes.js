@@ -5,14 +5,19 @@ class ContentFieldProvider {
     appendElementToContent(element) {
         this.content.appendChild(element);
     }
+    defineClassnameForContentRootElement(name_of_class) {
+        this.content.className = name_of_class;
+    }
 }
 export class FormConstructor extends ContentFieldProvider {
     constructor() {
         super();
         this.fillContentPropertyWithBlankElement('div');
+        this.defineClassnameForContentRootElement("creation_form_wrapper");
     }
     createForm() {
         this.appendInputFieldToContent();
+        this.appendTimeSelectionToContent();
         this.appendButtonsToContent();
         return this.content;
     }
@@ -22,13 +27,22 @@ export class FormConstructor extends ContentFieldProvider {
     }
     appendButtonsToContent() {
     }
+    appendTimeSelectionToContent() {
+    }
 }
 class InputConstructor extends ContentFieldProvider {
     constructor() {
         super();
-        this.fillContentPropertyWithBlankElement('input');
+        this.fillContentPropertyWithBlankElement('div');
+        this.defineClassnameForContentRootElement("creationfrom_inputdiv");
     }
     createInput() {
+        this.addInputField();
         return this.content;
+    }
+    addInputField() {
+        let input = document.createElement("input");
+        input.className = "creationform_input";
+        this.appendElementToContent(input);
     }
 }
