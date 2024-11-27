@@ -1,6 +1,10 @@
 class ContentFieldProvider {
     protected content!: HTMLElement;
 
+    constructor () {
+        this.fillContentPropertyWithBlankElement('div')
+    }
+
     protected fillContentPropertyWithBlankElement (element_name: string): void {
         this.content = document.createElement(element_name)
     }
@@ -18,13 +22,12 @@ export class FormConstructor extends ContentFieldProvider{
 
     constructor () {
         super()
-        this.fillContentPropertyWithBlankElement('div')
         this.defineClassnameForContentRootElement("creation_form_wrapper")
     }
 
     public createForm(): HTMLDivElement {
         this.appendInputFieldToContent()
-        this.appendTimeSelectionToContent()
+        this.appendTimeselectionToContent()
         this.appendButtonsToContent()
         return this.content as HTMLDivElement
     }
@@ -35,10 +38,11 @@ export class FormConstructor extends ContentFieldProvider{
     }
 
     private appendButtonsToContent(): void {
-
+        let buttons = new ButtonsConstructor().createButtons()
+        this.appendElementToContent(buttons)
     }
 
-    private appendTimeSelectionToContent(): void {
+    private appendTimeselectionToContent(): void {
 
     }
 
@@ -66,4 +70,15 @@ class InputConstructor extends ContentFieldProvider {
 
 }
 
+
+class ButtonsConstructor extends ContentFieldProvider {
+    constructor () {
+        super()
+        this.defineClassnameForContentRootElement('creationform_buttons_div')
+    }
+
+    public createButtons() {
+        return this.content
+    }
+}
 
