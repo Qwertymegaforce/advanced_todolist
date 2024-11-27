@@ -1,18 +1,34 @@
-export class FormConstructor {
+class ContentFieldProvider {
+    fillContentPropertyWithBlankElement(element_name) {
+        this.content = document.createElement(element_name);
+    }
+    appendElementToContent(element) {
+        this.content.appendChild(element);
+    }
+}
+export class FormConstructor extends ContentFieldProvider {
     constructor() {
-        this.fillContentPropertyWithBlankDiv();
+        super();
+        this.fillContentPropertyWithBlankElement('div');
     }
     createForm() {
-        this.addInputField();
+        this.appendInputFieldToContent();
+        this.appendButtonsToContent();
         return this.content;
     }
-    addInputField() {
-        let input_field = document.createElement('input');
-        input_field.className = "creation_form_input";
-        this.content.appendChild(input_field);
+    appendInputFieldToContent() {
+        let input_field = new InputConstructor().createInput();
+        this.appendElementToContent(input_field);
     }
-    fillContentPropertyWithBlankDiv() {
-        this.content = document.createElement("div");
-        this.content.className = "creation_form_wrapper";
+    appendButtonsToContent() {
+    }
+}
+class InputConstructor extends ContentFieldProvider {
+    constructor() {
+        super();
+        this.fillContentPropertyWithBlankElement('input');
+    }
+    createInput() {
+        return this.content;
     }
 }
