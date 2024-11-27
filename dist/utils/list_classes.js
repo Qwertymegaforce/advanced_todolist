@@ -59,3 +59,12 @@ class ButtonsConstructor extends ContentFieldProvider {
         return this.content;
     }
 }
+class TimeSelectionConstructor extends ContentFieldProvider {
+    constructor() {
+        super();
+        this.defineClassnameForContentRootElement('creationform_timeselection_div');
+    }
+    createTimeSelection() {
+        return this.content;
+    }
+}
