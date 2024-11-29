@@ -1,6 +1,6 @@
 import type { toDo_task_type } from "../types/todo_types.js";
 import { todo_list } from "./vars.js";
-import { task_list_DOM } from "./dom_vars.js";
+import { task_list_DOM, task_counter_DOM} from "./dom_vars.js";
 import { FormConstructor } from "./list_classes.js";
 
 
@@ -20,11 +20,19 @@ function updatePageTodoList(todo_list: toDo_task_type[]): void {
         let new_task_dom = createDomTask(item)
         task_list_DOM.appendChild(new_task_dom)
     }
+    updateTaskCounter()
+}
+
+export function updateTaskCounter(): void {
+    let number_of_tasks = task_list_DOM.children.length
+    let new_text_content = `${number_of_tasks} task`
+    if (number_of_tasks > 1 || number_of_tasks == 0) new_text_content += "s"
+    task_counter_DOM.textContent = new_text_content
 }
 
 function createDomTask(todo_task: toDo_task_type): HTMLDivElement {
     let wrapper = document.createElement('div')
-    wrapper.textContent = todo_task.text
+    wrapper.textContent = todo_task.text + ` ${todo_task.time.hours}:${todo_task.time.minutes}`
     return wrapper
 }
 
