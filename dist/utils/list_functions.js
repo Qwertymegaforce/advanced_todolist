@@ -19,7 +19,7 @@ function updatePageTodoList(todo_list) {
 }
 export function updateTaskCounter() {
     let number_of_tasks = task_list_DOM.children.length;
-    let new_text_content = `${number_of_tasks} TASKS`;
+    let new_text_content = `${number_of_tasks} TASK`;
     if (number_of_tasks > 1 || number_of_tasks == 0)
         new_text_content += "S";
     task_counter_DOM.textContent = new_text_content;
