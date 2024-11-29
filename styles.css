@@ -25,8 +25,6 @@ html, body, .main_wrapper {
     display: flex;
 }
 
-
-
 .main_wrapper {
     background: linear-gradient(85deg, rgba(254,205,171,1) 0%, rgba(250,184,145,1) 100%);
 }
