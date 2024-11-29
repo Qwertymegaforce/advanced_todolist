@@ -1,4 +1,6 @@
 import { task_list_DOM } from "./dom_vars.js";
+import { addTodo } from "./list_functions.js";
+import type { toDo_task_type } from "../types/todo_types";
 
 class ContentFieldProvider {
     protected content!: HTMLDivElement;
@@ -67,6 +69,7 @@ class InputConstructor extends ContentFieldProvider {
     private addInputField(): void{
         let input = document.createElement("input")
         input.className = "creationform_input"
+        input.id = "creationform_input_id"
         this.appendElementToContent(input)
     }
 
@@ -94,7 +97,18 @@ class ButtonsConstructor extends ContentFieldProvider {
         let button = document.createElement('button')
         button.textContent = "Создать"
         button.addEventListener('click', () => {
+            let input = this.parentContent.querySelector("#creationform_input_id") as HTMLInputElement
+            let text_content = input.textContent!
+            let new_todo: toDo_task_type = {
+                text: text_content,
+                completed: false,
+                time: {
+                    hours: 9,
+                    minutes: 10
+                }
+            }
             task_list_DOM.removeChild(this.parentContent)
+            addTodo(new_todo)
         })
         return button
     }
