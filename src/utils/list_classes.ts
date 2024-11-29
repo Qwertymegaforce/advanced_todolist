@@ -1,16 +1,18 @@
+import { task_list_DOM } from "./dom_vars.js";
+
 class ContentFieldProvider {
-    protected content!: HTMLElement;
+    protected content!: HTMLDivElement;
 
     constructor () {
         this.fillContentPropertyWithBlankElement('div')
     }
 
     protected fillContentPropertyWithBlankElement (element_name: string): void {
-        this.content = document.createElement(element_name)
+        this.content = document.createElement(element_name) as HTMLDivElement
     }
 
-    protected appendElementToContent(element: HTMLElement): void {
-        this.content.appendChild(element)
+    protected appendElementToContent(...elementArr: HTMLElement[]): void {
+        this.content.append(...elementArr)
     }
 
     protected defineClassnameForContentRootElement(name_of_class: string): void {
@@ -28,7 +30,7 @@ export class FormConstructor extends ContentFieldProvider{
     public createForm(): HTMLDivElement {
         this.appendInputFieldToContent()
         this.appendTimeselectionToContent()
-        this.appendButtonsToContent()
+        this.appendButtonsToContent(this.content)
         return this.content as HTMLDivElement
     }
 
@@ -37,13 +39,14 @@ export class FormConstructor extends ContentFieldProvider{
        this.appendElementToContent(input_field)
     }
 
-    private appendButtonsToContent(): void {
-        let buttons = new ButtonsConstructor().createButtons()
+    private appendButtonsToContent(parentContent: HTMLDivElement): void {
+        let buttons = new ButtonsConstructor(parentContent).createButtons()
         this.appendElementToContent(buttons)
     }
 
     private appendTimeselectionToContent(): void {
-
+        let timeSelection = new TimeSelectionConstructor().createTimeSelection()
+        this.appendElementToContent(timeSelection)
     }
 
 }
@@ -53,7 +56,6 @@ class InputConstructor extends ContentFieldProvider {
 
     constructor () {
         super()
-        this.fillContentPropertyWithBlankElement('div')
         this.defineClassnameForContentRootElement("creationfrom_inputdiv")
     }
 
@@ -72,14 +74,41 @@ class InputConstructor extends ContentFieldProvider {
 
 
 class ButtonsConstructor extends ContentFieldProvider {
-    constructor () {
+
+    private parentContent;
+
+    constructor (parentContent: HTMLDivElement) {
         super()
         this.defineClassnameForContentRootElement('creationform_buttons_div')
+        this.parentContent = parentContent
     }
 
     public createButtons() {
+        let confirm_button = this.createConfirmButton()
+        let rejectButton = this.createRejectButton()
+        this.appendElementToContent(confirm_button, rejectButton)
         return this.content
     }
+
+    private createConfirmButton(): HTMLButtonElement {
+        let button = document.createElement('button')
+        button.textContent = "Создать"
+        button.addEventListener('click', () => {
+            task_list_DOM.removeChild(this.parentContent)
+        })
+        return button
+    }
+
+    private createRejectButton(): HTMLButtonElement {
+        let button = document.createElement('button')
+        button.textContent = "Удалить"
+        button.addEventListener('click', () => {
+            task_list_DOM.removeChild(this.parentContent)
+        })
+        return button
+    }
+
+
 }
 
 
@@ -90,7 +119,7 @@ class TimeSelectionConstructor extends ContentFieldProvider {
     }
 
     public createTimeSelection() {
-        return this.content
+        return this.content as HTMLDivElement
     }
 }
 

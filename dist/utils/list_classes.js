@@ -1,3 +1,4 @@
+import { task_list_DOM } from "./dom_vars.js";
 class ContentFieldProvider {
     constructor() {
         this.fillContentPropertyWithBlankElement('div');
@@ -5,8 +6,8 @@ class ContentFieldProvider {
     fillContentPropertyWithBlankElement(element_name) {
         this.content = document.createElement(element_name);
     }
-    appendElementToContent(element) {
-        this.content.appendChild(element);
+    appendElementToContent(...elementArr) {
+        this.content.append(...elementArr);
     }
     defineClassnameForContentRootElement(name_of_class) {
         this.content.className = name_of_class;
@@ -20,24 +21,25 @@ export class FormConstructor extends ContentFieldProvider {
     createForm() {
         this.appendInputFieldToContent();
         this.appendTimeselectionToContent();
-        this.appendButtonsToContent();
+        this.appendButtonsToContent(this.content);
         return this.content;
     }
     appendInputFieldToContent() {
         let input_field = new InputConstructor().createInput();
         this.appendElementToContent(input_field);
     }
-    appendButtonsToContent() {
-        let buttons = new ButtonsConstructor().createButtons();
+    appendButtonsToContent(parentContent) {
+        let buttons = new ButtonsConstructor(parentContent).createButtons();
         this.appendElementToContent(buttons);
     }
     appendTimeselectionToContent() {
+        let timeSelection = new TimeSelectionConstructor().createTimeSelection();
+        this.appendElementToContent(timeSelection);
     }
 }
 class InputConstructor extends ContentFieldProvider {
     constructor() {
         super();
-        this.fillContentPropertyWithBlankElement('div');
         this.defineClassnameForContentRootElement("creationfrom_inputdiv");
     }
     createInput() {
@@ -51,12 +53,32 @@ class InputConstructor extends ContentFieldProvider {
     }
 }
 class ButtonsConstructor extends ContentFieldProvider {
-    constructor() {
+    constructor(parentContent) {
         super();
         this.defineClassnameForContentRootElement('creationform_buttons_div');
+        this.parentContent = parentContent;
     }
     createButtons() {
+        let confirm_button = this.createConfirmButton();
+        let rejectButton = this.createRejectButton();
+        this.appendElementToContent(confirm_button, rejectButton);
         return this.content;
+    }
+    createConfirmButton() {
+        let button = document.createElement('button');
+        button.textContent = "Создать";
+        button.addEventListener('click', () => {
+            task_list_DOM.removeChild(this.parentContent);
+        });
+        return button;
+    }
+    createRejectButton() {
+        let button = document.createElement('button');
+        button.textContent = "Удалить";
+        button.addEventListener('click', () => {
+            task_list_DOM.removeChild(this.parentContent);
+        });
+        return button;
     }
 }
 class TimeSelectionConstructor extends ContentFieldProvider {
