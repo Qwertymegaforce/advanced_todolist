@@ -3,6 +3,8 @@
     padding: 0;
     margin: 0;
     font-family: "Roboto";
+    --pink-color: rgb(115, 128, 215);
+    --faded-pink-color: rgba(115, 128, 215, 0.7)
 }
 
 html, body, .main_wrapper {
