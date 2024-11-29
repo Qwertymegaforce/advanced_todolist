@@ -15,7 +15,15 @@ export function displayToDoCreationForm (): void {
 }
 
 function updatePageTodoList(todo_list: toDo_task_type[]): void {
-    
+    task_list_DOM.innerHTML = ""
+    for (let item in todo_list) {
+        let new_task_dom = createDomTask()
+        task_list_DOM.appendChild(item)
+    }
+}
+
+function createDomTask(): HTMLDivElement {
+    return document.createElement('div')
 }
 
 function createToDoForm(): HTMLDivElement {

@@ -1,5 +1,6 @@
 import { task_list_DOM } from "./dom_vars.js";
 import { addTodo } from "./list_functions.js";
+import { addbutton_DOM } from "./dom_vars.js";
 class ContentFieldProvider {
     constructor() {
         this.fillContentPropertyWithBlankElement('div');
@@ -81,6 +82,7 @@ class ButtonsConstructor extends ContentFieldProvider {
                 }
             };
             task_list_DOM.removeChild(this.parentContent);
+            addbutton_DOM.style.pointerEvents = "auto";
             addTodo(new_todo);
         });
         return button;
@@ -89,6 +91,7 @@ class ButtonsConstructor extends ContentFieldProvider {
         let button = document.createElement('button');
         button.textContent = "Удалить";
         button.addEventListener('click', () => {
+            addbutton_DOM.style.pointerEvents = "auto";
             task_list_DOM.removeChild(this.parentContent);
         });
         return button;

@@ -10,6 +10,14 @@ export function displayToDoCreationForm() {
     task_list_DOM.appendChild(form);
 }
 function updatePageTodoList(todo_list) {
+    task_list_DOM.innerHTML = "";
+    for (let item in todo_list) {
+        let new_task_dom = createDomTask();
+        task_list_DOM.appendChild(item);
+    }
+}
+function createDomTask() {
+    return document.createElement('div');
 }
 function createToDoForm() {
     let form = new FormConstructor().createForm();

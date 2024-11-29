@@ -6,4 +6,5 @@ setDayOfWeek(today_date_obj);
 setDate(today_date_obj);
 addbutton_DOM.addEventListener("click", () => {
     displayToDoCreationForm();
+    addbutton_DOM.style.pointerEvents = "none";
 });
