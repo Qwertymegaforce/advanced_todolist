@@ -25,4 +25,19 @@ html, body, .main_wrapper {
     display: flex;
 }
 
+@font-face {
+    font-family: Roboto, sans-serif;
+    src: url("../fonts/Roboto-Regular.ttf");
+}
+
+@font-face {
+    font-family: RobotoLight, sans-serif;
+    src: url("../fonts/Roboto-Light.ttf");
+}
+
+@font-face {
+    font-family: RobotoBold, sans-serif;
+    src: url("../fonts/Roboto-Bold.ttf");
+}
+
 
