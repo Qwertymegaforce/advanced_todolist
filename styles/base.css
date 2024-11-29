@@ -2,6 +2,7 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    font-family: "Roboto";
 }
 
 html, body, .main_wrapper {
@@ -26,18 +27,18 @@ html, body, .main_wrapper {
 }
 
 @font-face {
-    font-family: Roboto, sans-serif;
-    src: url("../fonts/Roboto-Regular.ttf");
+    font-family: "Roboto";
+    src: url("../fonts/Roboto-Regular.woff");
 }
 
 @font-face {
-    font-family: RobotoLight, sans-serif;
-    src: url("../fonts/Roboto-Light.ttf");
+    font-family: "RobotoLight";
+    src: url("../fonts/Roboto-Light.woff");
 }
 
 @font-face {
-    font-family: RobotoBold, sans-serif;
-    src: url("../fonts/Roboto-Bold.ttf");
+    font-family: "RobotoBold";
+    src: url("../fonts/Roboto-Bold.woff");
 }
 
 
