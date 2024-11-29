@@ -72,7 +72,7 @@ class ButtonsConstructor extends ContentFieldProvider {
         button.textContent = "Создать";
         button.addEventListener('click', () => {
             let input = this.parentContent.querySelector("#creationform_input_id");
-            let text_content = input.textContent;
+            let text_content = input.value;
             let new_todo = {
                 text: text_content,
                 completed: false,

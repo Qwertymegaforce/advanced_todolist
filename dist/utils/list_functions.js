@@ -11,13 +11,15 @@ export function displayToDoCreationForm() {
 }
 function updatePageTodoList(todo_list) {
     task_list_DOM.innerHTML = "";
-    for (let item in todo_list) {
-        let new_task_dom = createDomTask();
-        task_list_DOM.appendChild(item);
+    for (let item of todo_list) {
+        let new_task_dom = createDomTask(item);
+        task_list_DOM.appendChild(new_task_dom);
     }
 }
-function createDomTask() {
-    return document.createElement('div');
+function createDomTask(todo_task) {
+    let wrapper = document.createElement('div');
+    wrapper.textContent = todo_task.text;
+    return wrapper;
 }
 function createToDoForm() {
     let form = new FormConstructor().createForm();
