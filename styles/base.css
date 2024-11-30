@@ -3,12 +3,17 @@
     padding: 0;
     margin: 0;
     font-family: "Roboto";
-    --pink-color: rgb(115, 128, 215);
-    --faded-pink-color: rgba(115, 128, 215, 0.7)
+    --purple-color: rgb(115, 128, 215);
+    --faded-purple-color: rgba(115, 128, 215, 0.7);
+    --super-faded-purple-color: rgba(115, 128, 215, 0.2)
 }
 
 html, body, .main_wrapper {
     height: 100%;
+}
+
+button:hover {
+    cursor: pointer;
 }
 
 .f-row {

@@ -16,6 +16,7 @@
 }
 
 .date_navigation, .counter_addtask{
+    border-bottom: 1px solid var(--super-faded-purple-color);
     height: 50px;
     align-items: center;
     justify-content: space-between;
@@ -28,16 +29,42 @@
 
 .nav_day_of_week{
     font-family: "RobotoBold";
-    color: var(--pink-color);
+    color: var(--purple-color);
     letter-spacing: 1px;
 }
 
-
-.nav_date_and_month{
+.nav_date_and_month, .taskcounter, .addtask_button {
     display: inline-block;
     font-family: "RobotoLight";
+    color: var(--faded-purple-color);
+}
+
+.nav_date_and_month, .addtask_button{
     font-size: 0.7rem;
+}
+
+.nav_date_and_month{
     margin-top: 2px;
-    color: var(--faded-pink-color);
     font-weight: 400;
+}
+
+.taskcounter{
+    font-size: 0.6rem;
+}
+
+.addtask_button{
+    font-family: "Roboto";
+    background-color: transparent;
+    border: none;
+    color: var(--purple-color);
+}
+
+
+.counter_addtask{
+    border-top: 1px solid var(--super-faded-purple-color);
+}
+
+
+.date_navigation, .counter_addtask {
+    padding: 0px 20px;
 }
