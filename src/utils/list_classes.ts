@@ -2,6 +2,7 @@ import { task_list_DOM } from "./dom_vars.js";
 import { addTodo } from "./list_functions.js";
 import type { toDo_task_type } from "../types/todo_types";
 import { addbutton_DOM } from "./dom_vars.js";
+import { check_circle_url, cancel_circle_url } from "./urls.js";
 
 class ContentFieldProvider {
     protected content!: HTMLDivElement;
@@ -23,11 +24,20 @@ class ContentFieldProvider {
     }
 }
 
+
+export class TodoConstructor extends ContentFieldProvider {
+    constructor () {
+        super()
+        this.defineClassnameForContentRootElement("creation_form_wrapper flex")
+    }
+}
+
+
 export class FormConstructor extends ContentFieldProvider{
 
     constructor () {
         super()
-        this.defineClassnameForContentRootElement("creation_form_wrapper")
+        this.defineClassnameForContentRootElement("creation_form_wrapper flex")
     }
 
     public createForm(): HTMLDivElement {
@@ -96,7 +106,9 @@ class ButtonsConstructor extends ContentFieldProvider {
 
     private createConfirmButton(): HTMLButtonElement {
         let button = document.createElement('button')
-        button.textContent = "Создать"
+        let inner_img = document.createElement('img')
+        inner_img.src = check_circle_url
+        button.appendChild(inner_img)
         button.addEventListener('click', () => {
             let input = this.parentContent.querySelector("#creationform_input_id") as HTMLInputElement
             let text_content = input.value
@@ -117,7 +129,9 @@ class ButtonsConstructor extends ContentFieldProvider {
 
     private createRejectButton(): HTMLButtonElement {
         let button = document.createElement('button')
-        button.textContent = "Удалить"
+        let inner_img = document.createElement('img')
+        inner_img.src = cancel_circle_url
+        button.appendChild(inner_img)
         button.addEventListener('click', () => {
             addbutton_DOM.style.pointerEvents = "auto"
             task_list_DOM.removeChild(this.parentContent)
