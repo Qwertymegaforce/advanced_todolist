@@ -10,6 +10,7 @@
 
 html, body, .main_wrapper {
     height: 100%;
+    font-family: "Roboto";
 }
 
 button {
