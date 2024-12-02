@@ -31,12 +31,6 @@ export function updateTaskCounter(): void {
     task_counter_DOM.textContent = new_text_content
 }
 
-function createDomTask(todo_task: toDo_task_type): HTMLDivElement {
-    let wrapper = document.createElement('div')
-    wrapper.textContent = todo_task.text + ` ${todo_task.time.hours}:${todo_task.time.minutes}`
-    return wrapper
-}
-
 function createToDoForm(): HTMLDivElement {
     let form = new FormConstructor().createForm()
     return form
