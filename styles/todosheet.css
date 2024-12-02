@@ -12,6 +12,8 @@
 }
 
 .tasklist_section{
+    gap: 0.5rem;
+    padding: 20px 15px;
     flex-grow: 1;
 }
 
@@ -25,7 +27,6 @@
 .nav_date{
     gap: 0.2rem;
 }
-
 
 .nav_day_of_week{
     font-family: "RobotoBold";
@@ -53,21 +54,19 @@
 }
 
 .addtask_button{
+    font-family: "Roboto";
     background-color: transparent;
     border: none;
     color: var(--purple-color);
 }
 
-
 .counter_addtask{
     border-top: 1px solid var(--super-faded-purple-color);
 }
 
-
 .date_navigation, .counter_addtask {
     padding: 0px 20px;
 }
-
 
 .day_button{
     margin-top: 2px;
@@ -78,5 +77,27 @@
 }
 
 .creation_form_wrapper {
+    align-items: center;
     justify-content: space-between;
+    font-size: 0.8rem;
+}
+
+.displayed_todo_timemarker {
+    font-family: "RobotoLight";
+    color: var(--faded-purple-color);
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.creationform_input{
+    border: none;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.047);
+    background-color: var(--super-faded-purple-color);
+    padding: 2px 5px;
+    border-radius: 5px;
+    color: white;
+}
+
+.creationform_input:focus {
+    outline: none;
 }

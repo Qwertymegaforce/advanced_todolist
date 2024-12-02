@@ -24,12 +24,14 @@ export class TodoConstructor extends ContentFieldProvider {
 
     private addTextField(): void {
         let text_field = document.createElement('p')
+        text_field.className = "displayed_todo_textfield"
         text_field.textContent = this.todo_obj.text
         this.appendElementToContent(text_field)
     }
 
     private addTimeMarker(): void {
         let time_marker = document.createElement('p')
+        time_marker.className = "displayed_todo_timemarker"
         let time_obj = this.todo_obj?.time
         let content
         if (time_obj) {
