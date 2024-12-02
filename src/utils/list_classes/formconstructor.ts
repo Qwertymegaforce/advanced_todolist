@@ -2,6 +2,7 @@ import type { toDo_task_type } from "../../types/todo_types.js"
 import { addbutton_DOM, task_list_DOM } from "../dom_vars.js"
 import { addTodo } from "../list_functions.js"
 import { cancel_circle_url, check_circle_url } from "../urls.js"
+import { ContentFieldProvider } from "./provider.js"
 
 export class FormConstructor extends ContentFieldProvider{
 

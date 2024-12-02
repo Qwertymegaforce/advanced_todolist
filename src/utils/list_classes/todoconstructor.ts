@@ -1,4 +1,5 @@
-import type{ toDo_task_type } from "../../types/todo_types";
+import type{ toDo_task_type } from "../../types/todo_types.js";
+import { ContentFieldProvider } from "./provider.js";
 
 export class TodoConstructor extends ContentFieldProvider {
     

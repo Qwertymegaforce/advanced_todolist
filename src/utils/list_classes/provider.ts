@@ -1,4 +1,4 @@
-class ContentFieldProvider {
+export class ContentFieldProvider {
     protected content!: HTMLDivElement;
 
     constructor () {
