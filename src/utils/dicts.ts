@@ -22,5 +22,3 @@ export const int_to_month_string = {
     10: "November",
     11: "December",
 };
-
-

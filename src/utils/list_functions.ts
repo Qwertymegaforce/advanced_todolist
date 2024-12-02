@@ -1,7 +1,8 @@
 import type { toDo_task_type } from "../types/todo_types.js";
 import { todo_list } from "./vars.js";
 import { task_list_DOM, task_counter_DOM} from "./dom_vars.js";
-import { FormConstructor } from "./list_classes.js";
+import { TodoConstructor } from "./list_classes/todoconstructor.js";
+import { FormConstructor } from "./list_classes/formconstructor.js";
 
 
 export function addTodo(toDo_obj: toDo_task_type): void {
@@ -17,7 +18,7 @@ export function displayToDoCreationForm (): void {
 function updatePageTodoList(todo_list: toDo_task_type[]): void {
     task_list_DOM.innerHTML = ""
     for (let item of todo_list) {
-        let new_task_dom = createDomTask(item)
+        let new_task_dom = new TodoConstructor(item).createDisplayedTodo()
         task_list_DOM.appendChild(new_task_dom)
     }
     updateTaskCounter()
