@@ -29,6 +29,16 @@ export class TodoConstructor extends ContentFieldProvider {
     }
 
     private addTimeMarker(): void {
-        
+        let time_marker = document.createElement('p')
+        let time_obj = this.todo_obj?.time
+        let content
+        if (time_obj) {
+            content = `${time_obj.hours}:${time_obj.minutes}`
+        }
+        else {
+            content = "ALL DAY"
+        }
+        time_marker.textContent = content
+        this.appendElementToContent(time_marker)
     }
 }
