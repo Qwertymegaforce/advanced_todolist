@@ -14,4 +14,16 @@ export class TodoConstructor extends ContentFieldProvider {
     public createDisplayedTodo(): HTMLDivElement {
         return document.createElement('div')
     }
+
+    private addCheckbox(): void {
+        
+    }
+
+    private addTextField(): void {
+
+    }
+
+    private addTimeMarker(): void {
+        
+    }
 }
