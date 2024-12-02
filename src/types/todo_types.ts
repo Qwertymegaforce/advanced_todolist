@@ -1,7 +1,7 @@
 export type toDo_task_type = {
     text: string,
     completed: boolean,
-    time: {
+    time?: {
         hours: number,
         minutes: number
     }
