@@ -12,7 +12,10 @@ export class TodoConstructor extends ContentFieldProvider {
     }
 
     public createDisplayedTodo(): HTMLDivElement {
-        return document.createElement('div')
+        this.addCheckbox()
+        this.addTextField()
+        this.addTimeMarker()
+        return this.content
     }
 
     private addCheckbox(): void {
@@ -20,7 +23,9 @@ export class TodoConstructor extends ContentFieldProvider {
     }
 
     private addTextField(): void {
-
+        let text_field = document.createElement('p')
+        text_field.textContent = this.todo_obj.text
+        this.appendElementToContent(text_field)
     }
 
     private addTimeMarker(): void {
