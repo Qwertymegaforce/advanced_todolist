@@ -68,3 +68,14 @@
 .date_navigation, .counter_addtask {
     padding: 0px 20px;
 }
+
+
+.day_button{
+    background-color: transparent;
+    border: none;
+    margin-top: 2px;
+}
+
+.arrow_left{
+    transform: rotate(180deg);
+}
