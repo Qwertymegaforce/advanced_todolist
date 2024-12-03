@@ -7,6 +7,7 @@ export class TodoConstructor extends ContentFieldProvider {
 
     constructor (todo_obj: toDo_task_type) {
         super()
+        this.fillContentPropertyWithBlankElement('div')
         this.defineClassnameForContentRootElement("creation_form_wrapper flex")
         this.todo_obj = todo_obj
     }

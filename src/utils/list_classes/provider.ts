@@ -1,10 +1,6 @@
 export class ContentFieldProvider {
     protected content!: HTMLDivElement;
 
-    constructor () {
-        this.fillContentPropertyWithBlankElement('div')
-    }
-
     protected fillContentPropertyWithBlankElement (element_name: string): void {
         this.content = document.createElement(element_name) as HTMLDivElement
     }

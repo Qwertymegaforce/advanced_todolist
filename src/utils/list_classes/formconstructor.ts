@@ -8,6 +8,7 @@ export class FormConstructor extends ContentFieldProvider{
 
     constructor () {
         super()
+        this.fillContentPropertyWithBlankElement('div')
         this.defineClassnameForContentRootElement("creation_form_wrapper flex")
     }
 
@@ -40,6 +41,7 @@ class InputConstructor extends ContentFieldProvider {
 
     constructor () {
         super()
+        this.fillContentPropertyWithBlankElement('div')
         this.defineClassnameForContentRootElement("creationfrom_inputdiv")
     }
 
@@ -65,6 +67,7 @@ class ButtonsConstructor extends ContentFieldProvider {
 
     constructor (parentContent: HTMLDivElement) {
         super()
+        this.fillContentPropertyWithBlankElement('div')
         this.defineClassnameForContentRootElement('creationform_buttons_div flex f-center')
         this.parentContent = parentContent
     }
@@ -120,6 +123,7 @@ class ButtonsConstructor extends ContentFieldProvider {
 class TimeSelectionConstructor extends ContentFieldProvider {
     constructor () {
         super()
+        this.fillContentPropertyWithBlankElement('div')
         this.defineClassnameForContentRootElement('creationform_timeselection_div')
     }
 
