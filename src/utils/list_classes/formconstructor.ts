@@ -107,6 +107,7 @@ class ButtonsConstructor extends ContentFieldProvider {
     private createBasicButton(img_url: string): HTMLButtonElement {
         let button = document.createElement('button')
         let inner_img = document.createElement('img')
+        button.className = "creationform_buttons"
         inner_img.src = img_url
         button.appendChild(inner_img)
         return button
