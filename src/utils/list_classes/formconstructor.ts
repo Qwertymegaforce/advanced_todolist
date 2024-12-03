@@ -64,7 +64,7 @@ class ButtonsConstructor extends ContentFieldProvider {
 
     constructor (parentContent: HTMLDivElement) {
         super()
-        this.defineClassnameForContentRootElement('creationform_buttons_div')
+        this.defineClassnameForContentRootElement('creationform_buttons_div flex f-center')
         this.parentContent = parentContent
     }
 

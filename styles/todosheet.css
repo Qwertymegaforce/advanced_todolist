@@ -68,10 +68,6 @@
     padding: 0px 20px;
 }
 
-.day_button{
-    margin-top: 2px;
-}
-
 .arrow_left{
     transform: rotate(180deg);
 }
