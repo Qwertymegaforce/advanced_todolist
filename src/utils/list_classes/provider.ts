@@ -1,5 +1,5 @@
 export class ContentFieldProvider {
-    protected content!: HTMLDivElement;
+    protected content!: HTMLElement;
 
     protected fillContentPropertyWithBlankElement (element_name: string): void {
         this.content = document.createElement(element_name) as HTMLDivElement
@@ -11,6 +11,10 @@ export class ContentFieldProvider {
 
     protected defineClassnameForContentRootElement(name_of_class: string): void {
         this.content.className = name_of_class
+    }
+
+    protected forceContentToBeEqualTo(element: HTMLElement) {
+        this.content = element
     }
 }
 

@@ -24,7 +24,7 @@ export class FormConstructor extends ContentFieldProvider{
        this.appendElementToContent(input_field)
     }
 
-    private appendButtonsToContent(parentContent: HTMLDivElement): void {
+    private appendButtonsToContent(parentContent: HTMLElement): void {
         let buttons = new ButtonsConstructor(parentContent).createButtons()
         this.appendElementToContent(buttons)
     }
@@ -65,7 +65,7 @@ class ButtonsConstructor extends ButtonProvider {
 
     private parentContent;
 
-    constructor (parentContent: HTMLDivElement) {
+    constructor (parentContent: HTMLElement) {
         super()
         this.fillContentPropertyWithBlankElement('div')
         this.defineClassnameForContentRootElement('creationform_buttons_div flex f-center')
@@ -112,19 +112,17 @@ class ButtonsConstructor extends ButtonProvider {
 
 
 class TimeSelectionConstructor extends ButtonProvider {
-    constructor () {
-        super()
-        this.fillContentPropertyWithBlankElement('button')
-        this.defineClassnameForContentRootElement('creationform_timeselection_button')
-    }
 
     public createTimeSelection() {
         let button = this.createBasicButtonWithIcon(time_selection_url)
         this.setOnClickPopupEventTo(button)
-        return this.content as HTMLDivElement
+        this.forceContentToBeEqualTo(button)
+        return this.content as HTMLButtonElement
     }
 
     private setOnClickPopupEventTo(button: HTMLButtonElement) : void {
-
-    }
+        button.addEventListener('click', () => {
+            console.log('Показываю меню');
+        }
+    )}
 }
