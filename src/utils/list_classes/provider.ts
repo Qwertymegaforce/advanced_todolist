@@ -13,3 +13,15 @@ export class ContentFieldProvider {
         this.content.className = name_of_class
     }
 }
+
+
+export class ButtonProvider extends ContentFieldProvider {
+    protected createBasicButtonWithIcon(img_url: string): HTMLButtonElement {
+        let button = document.createElement('button')
+        let inner_img = document.createElement('img')
+        button.className = "creationform_buttons"
+        inner_img.src = img_url
+        button.appendChild(inner_img)
+        return button
+    }
+}

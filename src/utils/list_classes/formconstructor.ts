@@ -1,8 +1,8 @@
 import type { toDo_task_type } from "../../types/todo_types.js"
 import { addbutton_DOM, task_list_DOM } from "../dom_vars.js"
 import { addTodo } from "../list_functions.js"
-import { cancel_circle_url, check_circle_url } from "../urls.js"
-import { ContentFieldProvider } from "./provider.js"
+import { cancel_circle_url, check_circle_url, time_selection_url } from "../urls.js"
+import { ContentFieldProvider, ButtonProvider } from "./provider.js"
 
 export class FormConstructor extends ContentFieldProvider{
 
@@ -61,7 +61,7 @@ class InputConstructor extends ContentFieldProvider {
 }
 
 
-class ButtonsConstructor extends ContentFieldProvider {
+class ButtonsConstructor extends ButtonProvider {
 
     private parentContent;
 
@@ -80,7 +80,7 @@ class ButtonsConstructor extends ContentFieldProvider {
     }
 
     private createConfirmButton(): HTMLButtonElement {
-        let button = this.createBasicButton(check_circle_url)
+        let button = this.createBasicButtonWithIcon(check_circle_url)
         button.addEventListener('click', () => {
             let input = this.parentContent.querySelector("#creationform_input_id") as HTMLInputElement
             let text_content = input.value
@@ -100,7 +100,7 @@ class ButtonsConstructor extends ContentFieldProvider {
     }
 
     private createRejectButton(): HTMLButtonElement {
-        let button = this.createBasicButton(cancel_circle_url)
+        let button = this.createBasicButtonWithIcon(cancel_circle_url)
         button.addEventListener('click', () => {
             addbutton_DOM.style.pointerEvents = "auto"
             task_list_DOM.removeChild(this.parentContent)
@@ -108,26 +108,23 @@ class ButtonsConstructor extends ContentFieldProvider {
         return button
     }
 
-    private createBasicButton(img_url: string): HTMLButtonElement {
-        let button = document.createElement('button')
-        let inner_img = document.createElement('img')
-        button.className = "creationform_buttons"
-        inner_img.src = img_url
-        button.appendChild(inner_img)
-        return button
-    }
-
 }
 
 
-class TimeSelectionConstructor extends ContentFieldProvider {
+class TimeSelectionConstructor extends ButtonProvider {
     constructor () {
         super()
-        this.fillContentPropertyWithBlankElement('div')
-        this.defineClassnameForContentRootElement('creationform_timeselection_div')
+        this.fillContentPropertyWithBlankElement('button')
+        this.defineClassnameForContentRootElement('creationform_timeselection_button')
     }
 
     public createTimeSelection() {
+        let button = this.createBasicButtonWithIcon(time_selection_url)
+        this.setOnClickPopupEventTo(button)
         return this.content as HTMLDivElement
+    }
+
+    private setOnClickPopupEventTo(button: HTMLButtonElement) : void {
+
     }
 }
