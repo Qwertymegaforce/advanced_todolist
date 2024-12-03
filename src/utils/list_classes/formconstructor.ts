@@ -76,10 +76,7 @@ class ButtonsConstructor extends ContentFieldProvider {
     }
 
     private createConfirmButton(): HTMLButtonElement {
-        let button = document.createElement('button')
-        let inner_img = document.createElement('img')
-        inner_img.src = check_circle_url
-        button.appendChild(inner_img)
+        let button = this.createBasicButton(check_circle_url)
         button.addEventListener('click', () => {
             let input = this.parentContent.querySelector("#creationform_input_id") as HTMLInputElement
             let text_content = input.value
@@ -99,10 +96,7 @@ class ButtonsConstructor extends ContentFieldProvider {
     }
 
     private createRejectButton(): HTMLButtonElement {
-        let button = document.createElement('button')
-        let inner_img = document.createElement('img')
-        inner_img.src = cancel_circle_url
-        button.appendChild(inner_img)
+        let button = this.createBasicButton(cancel_circle_url)
         button.addEventListener('click', () => {
             addbutton_DOM.style.pointerEvents = "auto"
             task_list_DOM.removeChild(this.parentContent)
@@ -110,6 +104,13 @@ class ButtonsConstructor extends ContentFieldProvider {
         return button
     }
 
+    private createBasicButton(img_url: string): HTMLButtonElement {
+        let button = document.createElement('button')
+        let inner_img = document.createElement('img')
+        inner_img.src = img_url
+        button.appendChild(inner_img)
+        return button
+    }
 
 }
 
