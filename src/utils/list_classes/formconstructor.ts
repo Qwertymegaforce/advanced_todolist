@@ -50,6 +50,7 @@ class InputConstructor extends ContentFieldProvider {
 
     private addInputField(): void{
         let input = document.createElement("input")
+        input.autocomplete = "off"
         input.className = "creationform_input"
         input.id = "creationform_input_id"
         this.appendElementToContent(input)
