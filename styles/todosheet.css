@@ -2,13 +2,16 @@
     background: linear-gradient(85deg, rgba(254,205,171,1) 0%, rgba(250,184,145,1) 100%);
 }
 
-.todo_sheet{
+.timeselection_form, .todo_sheet {
     background-color: white;
+    border-radius: 5px;
+}
+
+.todo_sheet{
+    box-shadow: 15px 10px 10px rgba(0, 0, 0, 0.229);
     height: 80%;
     max-height: 450px;
     width: 300px;
-    box-shadow: 15px 10px 10px rgba(0, 0, 0, 0.229);
-    border-radius: 5px;
 }
 
 .tasklist_section{
@@ -73,6 +76,7 @@
 }
 
 .creation_form_wrapper {
+    position: relative;
     align-items: center;
     justify-content: space-between;
     font-size: 0.8rem;
@@ -102,4 +106,12 @@
 
 .creationform_buttons_div {
     gap: 5px;
+}
+
+.timeselection_form {
+    position: absolute;
+    top: 130%;
+    height: 100px;
+    width: 100%;
+    box-shadow: 0px 0px 15px var(--super-faded-purple-color);
 }

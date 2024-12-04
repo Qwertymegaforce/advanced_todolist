@@ -147,7 +147,7 @@ class TimeSelectionFormConstructor extends ContentProviderWithInitialDivContent 
     }
 
     private addTimeSelectionFieldToContent(): void {
-
+        
     }
 
     private addAllDayPropertyToContent(): void {
