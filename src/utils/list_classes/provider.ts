@@ -18,6 +18,7 @@ class ContentFieldProvider {
     }
 }
 
+
 class ParentContentPropertyProvider extends ContentFieldProvider{
     
     protected parent_content: HTMLElement;
@@ -38,7 +39,6 @@ export class ContentProviderWithInitialDivContent extends ContentFieldProvider{
 
 
 export class ButtonProvider extends ParentContentPropertyProvider {
-
 
     protected createBasicButtonWithIcon(img_url: string): HTMLButtonElement {
         let button = document.createElement('button')
