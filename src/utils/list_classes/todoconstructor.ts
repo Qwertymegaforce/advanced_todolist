@@ -1,7 +1,7 @@
 import type{ toDo_task_type } from "../../types/todo_types.js";
-import { ContentFieldProvider } from "./provider.js";
+import { ContentProviderWithInitialDivContent } from "./provider.js";
 
-export class TodoConstructor extends ContentFieldProvider {
+export class TodoConstructor extends ContentProviderWithInitialDivContent {
     
     private todo_obj: toDo_task_type;
 

@@ -2,13 +2,13 @@ import type { toDo_task_type } from "../../types/todo_types.js"
 import { addbutton_DOM, task_list_DOM } from "../dom_vars.js"
 import { addTodo } from "../list_functions.js"
 import { cancel_circle_url, check_circle_url, time_selection_url } from "../urls.js"
-import { ContentFieldProvider, ButtonProvider } from "./provider.js"
+import { ButtonProvider, ContentProviderWithInitialDivContent } from "./provider.js"
 
-export class FormConstructor extends ContentFieldProvider{
+
+export class FormConstructor extends ContentProviderWithInitialDivContent{
 
     constructor () {
         super()
-        this.fillContentPropertyWithBlankElement('div')
         this.defineClassnameForContentRootElement("creation_form_wrapper flex")
     }
 
@@ -16,6 +16,7 @@ export class FormConstructor extends ContentFieldProvider{
         this.appendInputFieldToContent()
         this.appendTimeselectionToContent()
         this.appendButtonsToContent(this.content)
+        this.appendTimeselectionFormToContent()
         return this.content as HTMLDivElement
     }
 
@@ -34,14 +35,17 @@ export class FormConstructor extends ContentFieldProvider{
         this.appendElementToContent(timeSelection)
     }
 
+    private appendTimeselectionFormToContent(): void {
+
+    }
+
 }
 
 
-class InputConstructor extends ContentFieldProvider {
+class InputConstructor extends ContentProviderWithInitialDivContent {
 
     constructor () {
         super()
-        this.fillContentPropertyWithBlankElement('div')
         this.defineClassnameForContentRootElement("creationfrom_inputdiv")
     }
 
@@ -125,4 +129,17 @@ class TimeSelectionConstructor extends ButtonProvider {
             console.log('Показываю меню');
         }
     )}
+}
+
+
+class TimeSelectionFormConstructor extends ContentProviderWithInitialDivContent {
+
+    constructor () {
+        super()
+    }
+
+    public createTimeSelectionForm() {
+        this
+        return this.content
+    }
 }

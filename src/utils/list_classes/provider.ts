@@ -1,4 +1,4 @@
-export class ContentFieldProvider {
+class ContentFieldProvider {
     protected content!: HTMLElement;
 
     protected fillContentPropertyWithBlankElement (element_name: string): void {
@@ -15,6 +15,14 @@ export class ContentFieldProvider {
 
     protected forceContentToBeEqualTo(element: HTMLElement) {
         this.content = element
+    }
+}
+
+
+export class ContentProviderWithInitialDivContent extends ContentFieldProvider{
+    constructor () {
+        super()
+        this.fillContentPropertyWithBlankElement('div')
     }
 }
 
