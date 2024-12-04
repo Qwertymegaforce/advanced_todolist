@@ -125,15 +125,35 @@ class TimeSelectionConstructor extends ButtonProvider {
 
     private setOnClickPopupEventTo(button: HTMLButtonElement) : void {
         button.addEventListener('click', () => {
+            let form = this.findDOMTimeselectionForm()
             if(!data_storage.timeselection_form_is_displayed) {
-                console.log("Показываю форму");
+                this.displayTimeSelectionForm(form)
             }
             else {
-                console.log("Скрываю форму");
+                this.hideTimeSelectionForm(form)
             }
-            data_storage.timeselection_form_is_displayed = !data_storage.timeselection_form_is_displayed
+            data_storage.changeStateOfFormDisplayed()
         }
     )}
+
+    private displayTimeSelectionForm(form: HTMLDivElement): void {
+        this.replaceClassnameOf(form, "d-none", "d-block")
+    }
+
+    private hideTimeSelectionForm(form: HTMLDivElement): void {
+        this.replaceClassnameOf(form, "d-block", "d-none")
+    }
+
+    private replaceClassnameOf(form: HTMLDivElement, old_classname: string, new_classname: string): void {
+        let form_classname = form.className
+        let new_result_classname = form_classname.replace(old_classname, new_classname)
+        form.className = new_result_classname
+    }
+
+    private findDOMTimeselectionForm(): HTMLDivElement {
+        let form = this.parent_content.querySelector('#timeselection_form_id') as HTMLDivElement
+        return form
+    }
 }
 
 
@@ -141,7 +161,8 @@ class TimeSelectionFormConstructor extends ContentProviderWithInitialDivContent 
 
     constructor () {
         super()
-        this.defineClassnameForContentRootElement("timeselection_form")
+        this.defineClassnameForContentRootElement("timeselection_form d-none")
+        this.defineIdForContentElement('timeselection_form_id')
     }
 
     public createTimeSelectionForm() {
