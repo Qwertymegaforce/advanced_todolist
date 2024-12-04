@@ -32,7 +32,7 @@ export class FormConstructor extends ContentProviderWithInitialDivContent{
     }
 
     private appendTimeselectionToContent(): void {
-        let time_selection = new TimeSelectionConstructor().createTimeSelection()
+        let time_selection = new TimeSelectionConstructor(this.content).createTimeSelection()
         this.appendElementToContent(time_selection)
     }
 
@@ -69,13 +69,10 @@ class InputConstructor extends ContentProviderWithInitialDivContent {
 
 class ButtonsConstructor extends ButtonProvider {
 
-    private parent_content: HTMLElement;
-
-    constructor (parentContent: HTMLElement) {
-        super()
+    constructor (parent_content: HTMLElement) {
+        super(parent_content)
         this.fillContentPropertyWithBlankElement('div')
         this.defineClassnameForContentRootElement('creationform_buttons_div flex f-center')
-        this.parent_content = parentContent
     }
 
     public createButtons() {
