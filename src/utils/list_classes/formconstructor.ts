@@ -31,12 +31,13 @@ export class FormConstructor extends ContentProviderWithInitialDivContent{
     }
 
     private appendTimeselectionToContent(): void {
-        let timeSelection = new TimeSelectionConstructor().createTimeSelection()
-        this.appendElementToContent(timeSelection)
+        let time_selection = new TimeSelectionConstructor().createTimeSelection()
+        this.appendElementToContent(time_selection)
     }
 
     private appendTimeselectionFormToContent(): void {
-
+        let time_selection_form = new TimeSelectionFormConstructor().createTimeSelectionForm()
+        this.appendElementToContent(time_selection_form)
     }
 
 }
@@ -67,26 +68,26 @@ class InputConstructor extends ContentProviderWithInitialDivContent {
 
 class ButtonsConstructor extends ButtonProvider {
 
-    private parentContent;
+    private parent_content;
 
     constructor (parentContent: HTMLElement) {
         super()
         this.fillContentPropertyWithBlankElement('div')
         this.defineClassnameForContentRootElement('creationform_buttons_div flex f-center')
-        this.parentContent = parentContent
+        this.parent_content = parentContent
     }
 
     public createButtons() {
         let confirm_button = this.createConfirmButton()
-        let rejectButton = this.createRejectButton()
-        this.appendElementToContent(confirm_button, rejectButton)
+        let reject_button = this.createRejectButton()
+        this.appendElementToContent(confirm_button, reject_button)
         return this.content
     }
 
     private createConfirmButton(): HTMLButtonElement {
         let button = this.createBasicButtonWithIcon(check_circle_url)
         button.addEventListener('click', () => {
-            let input = this.parentContent.querySelector("#creationform_input_id") as HTMLInputElement
+            let input = this.parent_content.querySelector("#creationform_input_id") as HTMLInputElement
             let text_content = input.value
             let new_todo: toDo_task_type = {
                 text: text_content,
@@ -96,7 +97,7 @@ class ButtonsConstructor extends ButtonProvider {
                     minutes: 10
                 }
             }
-            task_list_DOM.removeChild(this.parentContent)
+            task_list_DOM.removeChild(this.parent_content)
             addbutton_DOM.style.pointerEvents = "auto"
             addTodo(new_todo)
         })
@@ -107,7 +108,7 @@ class ButtonsConstructor extends ButtonProvider {
         let button = this.createBasicButtonWithIcon(cancel_circle_url)
         button.addEventListener('click', () => {
             addbutton_DOM.style.pointerEvents = "auto"
-            task_list_DOM.removeChild(this.parentContent)
+            task_list_DOM.removeChild(this.parent_content)
         })
         return button
     }
@@ -136,6 +137,7 @@ class TimeSelectionFormConstructor extends ContentProviderWithInitialDivContent 
 
     constructor () {
         super()
+        this.defineClassnameForContentRootElement("timeselection_form")
     }
 
     public createTimeSelectionForm() {
@@ -149,6 +151,6 @@ class TimeSelectionFormConstructor extends ContentProviderWithInitialDivContent 
     }
 
     private addAllDayPropertyToContent(): void {
-        
+
     }
 }
