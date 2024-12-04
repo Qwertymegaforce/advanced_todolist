@@ -139,7 +139,16 @@ class TimeSelectionFormConstructor extends ContentProviderWithInitialDivContent 
     }
 
     public createTimeSelectionForm() {
-        this
+        this.addTimeSelectionFieldToContent()
+        this.addAllDayPropertyToContent()
         return this.content
+    }
+
+    private addTimeSelectionFieldToContent(): void {
+
+    }
+
+    private addAllDayPropertyToContent(): void {
+        
     }
 }
