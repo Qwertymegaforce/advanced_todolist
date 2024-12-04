@@ -27,6 +27,14 @@ img {
     display: block;
 }
 
+.d-none {
+    display: none;
+}
+
+.d-block {
+    display: block;
+}
+
 .f-row {
     flex-direction: row;
 }
