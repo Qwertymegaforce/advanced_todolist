@@ -3,6 +3,7 @@ import { addbutton_DOM, task_list_DOM } from "../dom_vars.js"
 import { addTodo } from "../list_functions.js"
 import { cancel_circle_url, check_circle_url, time_selection_url } from "../urls.js"
 import { ButtonProvider, ContentProviderWithInitialDivContent } from "./provider.js"
+import { data_storage } from "./dataclass.js"
 
 
 export class FormConstructor extends ContentProviderWithInitialDivContent{
@@ -68,7 +69,7 @@ class InputConstructor extends ContentProviderWithInitialDivContent {
 
 class ButtonsConstructor extends ButtonProvider {
 
-    private parent_content;
+    private parent_content: HTMLElement;
 
     constructor (parentContent: HTMLElement) {
         super()
@@ -127,7 +128,13 @@ class TimeSelectionConstructor extends ButtonProvider {
 
     private setOnClickPopupEventTo(button: HTMLButtonElement) : void {
         button.addEventListener('click', () => {
-            console.log('Показываю меню');
+            if(!data_storage.timeselection_form_is_displayed) {
+                console.log("Показываю форму");
+            }
+            else {
+                console.log("Скрываю форму");
+            }
+            data_storage.timeselection_form_is_displayed = !data_storage.timeselection_form_is_displayed
         }
     )}
 }
@@ -147,7 +154,7 @@ class TimeSelectionFormConstructor extends ContentProviderWithInitialDivContent 
     }
 
     private addTimeSelectionFieldToContent(): void {
-        
+
     }
 
     private addAllDayPropertyToContent(): void {
