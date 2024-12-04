@@ -13,6 +13,10 @@ class ContentFieldProvider {
         this.content.className = name_of_class
     }
 
+    protected defineIdForContentElement(id: string): void {
+        this.content.id = id
+    }
+
     protected forceContentToBeEqualTo(element: HTMLElement) {
         this.content = element
     }
