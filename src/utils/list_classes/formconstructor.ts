@@ -1,7 +1,12 @@
 import type { toDo_task_type } from "../../types/todo_types.js"
 import { addbutton_DOM, task_list_DOM } from "../dom_vars.js"
 import { addTodo } from "../list_functions.js"
-import { cancel_circle_url, check_circle_url, time_selection_url } from "../urls.js"
+import { 
+    cancel_circle_url, 
+    check_circle_url, 
+    time_selection_url, 
+    check_url
+} from "../urls.js"
 import { ButtonProvider, ContentProviderWithInitialDivContent } from "./provider.js"
 import { data_storage } from "./dataclass.js"
 
@@ -196,8 +201,8 @@ class AllDayFieldConstructor extends ContentProviderWithInitialDivContent {
     }
 
     private addCheckboxToContent(): void {
-        let checkbox_field = document.createElement('div')
-
+        let checkbox_field = new CheckBoxConstructor().createCheckBox()
+        this.appendElementToContent(checkbox_field)
     }
 
     private addSignAllDayToContent(): void {
@@ -210,13 +215,48 @@ class AllDayFieldConstructor extends ContentProviderWithInitialDivContent {
 
 class CheckBoxConstructor extends ContentProviderWithInitialDivContent {
 
-    onactiveFunc: () => void
-    ondisableFunc: () => void
+    protected onactiveFunc: () => void
+    protected ondisableFunc: () => void
 
-    constructor (onactive_func: () => void, ondisable_func: ()=> void) {
+    private checkmark_url = check_url
+
+    constructor (onactive_func: () => void = () => {}, ondisable_func: ()=> void = () => {}) {
         super()
-        this.defineClassnameForContentRootElement("checkbox")
+        this.defineClassnameForContentRootElement("checkbox_div")
+        this.setDataAttrForContent("data-active", "false")
         this.onactiveFunc = onactive_func
         this.ondisableFunc = ondisable_func
     }
+
+    public createCheckBox(): HTMLDivElement {
+        let img_check_mark = this.createImgCheckMark()
+        this.addOnClickListenerToContent(img_check_mark)
+        this.appendElementToContent(img_check_mark)
+        return this.content as HTMLDivElement
+    }
+
+    private createImgCheckMark(): HTMLImageElement {
+        let img = document.createElement('img')
+        img.src = this.checkmark_url
+        return img
+    }
+
+    private addOnClickListenerToContent(img: HTMLImageElement): void {
+        this.content.addEventListener("click", () => {
+            
+            let is_active = (this.content.dataset.active === "true")
+            
+            if (!is_active) {
+                this.onactiveFunc()
+                img.style.opacity = "1"
+                this.setDataAttrForContent("data-active", "true")
+            }
+            else {
+                this.ondisableFunc()
+                img.style.opacity = "0"
+                this.setDataAttrForContent("data-active", "false")
+            }
+        })
+    }
+
 }
