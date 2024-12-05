@@ -133,8 +133,8 @@ class TimeSelectionConstructor extends ButtonProvider {
                 this.hideTimeSelectionForm(form)
             }
             data_storage.changeStateOfFormDisplayed()
-        }
-    )}
+        })
+    }
 
     private displayTimeSelectionForm(form: HTMLDivElement): void {
         this.replaceClassnameOf(form, "d-none", "d-block")
@@ -176,6 +176,29 @@ class TimeSelectionFormConstructor extends ContentProviderWithInitialDivContent 
     }
 
     private addAllDayPropertyToContent(): void {
+        
+    }
+}
+
+
+class AllDayFieldConstructor extends ContentProviderWithInitialDivContent {
+
+    constructor () {
+        super()
+        this.defineClassnameForContentRootElement("all_day_div")
+    }
+
+    public createAllDayDiv(): HTMLDivElement {
+        this.addCheckboxToContent()
+        this.addSignAllDayToContent()
+        return this.content as HTMLDivElement
+    }
+
+    private addCheckboxToContent(): void {
+        
+    }
+
+    private addSignAllDayToContent(): void {
 
     }
 }
