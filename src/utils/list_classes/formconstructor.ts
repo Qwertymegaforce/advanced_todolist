@@ -176,7 +176,8 @@ class TimeSelectionFormConstructor extends ContentProviderWithInitialDivContent 
     }
 
     private addAllDayPropertyToContent(): void {
-        
+        let all_day_div = new AllDayFieldConstructor().createAllDayDiv()
+        this.appendElementToContent(all_day_div)
     }
 }
 
@@ -195,10 +196,27 @@ class AllDayFieldConstructor extends ContentProviderWithInitialDivContent {
     }
 
     private addCheckboxToContent(): void {
-        
+        let checkbox_field = document.createElement('div')
+
     }
 
     private addSignAllDayToContent(): void {
+        let sign = document.createElement('p')
+        sign.textContent = "ALL DAY"
+        this.appendElementToContent(sign)    
+    }
+}
 
+
+class CheckBoxConstructor extends ContentProviderWithInitialDivContent {
+
+    onactiveFunc: () => void
+    ondisableFunc: () => void
+
+    constructor (onactive_func: () => void, ondisable_func: ()=> void) {
+        super()
+        this.defineClassnameForContentRootElement("checkbox")
+        this.onactiveFunc = onactive_func
+        this.ondisableFunc = ondisable_func
     }
 }
