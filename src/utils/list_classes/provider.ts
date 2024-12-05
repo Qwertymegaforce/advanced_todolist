@@ -21,7 +21,7 @@ class ContentFieldProvider {
         this.content = element
     }
 
-    protected setDataAttrForContent(name: string, value: any): void {
+    protected setDataAttrForContent(name: string, value: string): void {
         this.content.setAttribute(name, value)
     }
 }
