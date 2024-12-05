@@ -243,7 +243,6 @@ class CheckBoxConstructor extends ContentProviderWithInitialDivContent {
 
     private addOnClickListenerToContent(img: HTMLImageElement): void {
         this.content.addEventListener("click", () => {
-            
             let is_active = (this.content.dataset.active === "true")
             
             if (!is_active) {
