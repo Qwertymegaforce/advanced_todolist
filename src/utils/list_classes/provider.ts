@@ -20,6 +20,10 @@ class ContentFieldProvider {
     protected forceContentToBeEqualTo(element: HTMLElement) {
         this.content = element
     }
+
+    protected setDataAttrForContent(name: string, value: any): void {
+        this.content.setAttribute(name, value)
+    }
 }
 
 
