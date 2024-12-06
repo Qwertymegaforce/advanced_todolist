@@ -191,7 +191,7 @@ class AllDayFieldConstructor extends ContentProviderWithInitialDivContent {
 
     constructor () {
         super()
-        this.defineClassnameForContentRootElement("all_day_div")
+        this.defineClassnameForContentRootElement("all_day_div flex f-center")
     }
 
     public createAllDayDiv(): HTMLDivElement {
@@ -238,6 +238,7 @@ class CheckBoxConstructor extends ContentProviderWithInitialDivContent {
     private createImgCheckMark(): HTMLImageElement {
         let img = document.createElement('img')
         img.src = this.checkmark_url
+        img.className = "checkbox_img"
         return img
     }
 
@@ -248,11 +249,13 @@ class CheckBoxConstructor extends ContentProviderWithInitialDivContent {
             if (!is_active) {
                 this.onactiveFunc()
                 img.style.opacity = "1"
+                this.content.style.backgroundColor = "var(--purple-color)"
                 this.setDataAttrForContent("data-active", "true")
             }
             else {
                 this.ondisableFunc()
                 img.style.opacity = "0"
+                this.content.style.backgroundColor = "white"
                 this.setDataAttrForContent("data-active", "false")
             }
         })

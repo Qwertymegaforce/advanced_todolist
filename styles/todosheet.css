@@ -115,3 +115,20 @@
     width: 100%;
     box-shadow: 0px 0px 15px var(--super-faded-purple-color);
 }
+
+.checkbox_div{
+    cursor: pointer;
+    border: 1px solid var(--faded-purple-color);
+    background-color: white;
+    height: min-content;
+    width: min-content;
+    transition: all 0.25s;
+}
+
+.all_day_div{
+    gap: 0.2rem;
+}
+
+.checkbox_img{
+    width: 15px;
+}
