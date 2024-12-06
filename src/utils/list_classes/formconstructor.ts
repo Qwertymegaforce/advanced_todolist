@@ -213,7 +213,7 @@ class AllDayFieldConstructor extends ContentProviderWithInitialDivContent {
 }
 
 
-class CheckBoxConstructor extends ContentProviderWithInitialDivContent {
+export class CheckBoxConstructor extends ContentProviderWithInitialDivContent {
 
     protected onactiveFunc: () => void
     protected ondisableFunc: () => void

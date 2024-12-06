@@ -1,5 +1,7 @@
 import type{ toDo_task_type } from "../../types/todo_types.js";
+import { CheckBoxConstructor } from "./formconstructor.js";
 import { ContentProviderWithInitialDivContent } from "./provider.js";
+
 
 export class TodoConstructor extends ContentProviderWithInitialDivContent {
     
@@ -19,7 +21,8 @@ export class TodoConstructor extends ContentProviderWithInitialDivContent {
     }
 
     private addCheckbox(): void {
-        
+        let checkbox_field = new CheckBoxConstructor().createCheckBox()
+        this.appendElementToContent(checkbox_field)
     }
 
     private addTextField(): void {
