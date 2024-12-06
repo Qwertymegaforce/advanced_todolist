@@ -92,6 +92,7 @@ class ButtonsConstructor extends ButtonProvider {
             let input = this.parent_content.querySelector("#creationform_input_id") as HTMLInputElement
             let text_content = input.value
             let new_todo: toDo_task_type = {
+                id: data_storage.actual_unique_todo_id,
                 text: text_content,
                 completed: false,
                 time: {

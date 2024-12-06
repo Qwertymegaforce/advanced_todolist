@@ -3,10 +3,12 @@ import { todo_list } from "./vars.js";
 import { task_list_DOM, task_counter_DOM} from "./dom_vars.js";
 import { TodoConstructor } from "./list_classes/todoconstructor.js";
 import { FormConstructor } from "./list_classes/formconstructor.js";
+import { data_storage } from "./list_classes/dataclass.js";
 
 
 export function addTodo(toDo_obj: toDo_task_type): void {
     todo_list.push(toDo_obj)
+    data_storage.updateActualUniqueTodoId()
     updatePageTodoList(todo_list)
 }
 
