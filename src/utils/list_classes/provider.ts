@@ -137,8 +137,8 @@ export class CheckBoxConstructor extends ContentProviderWithInitialDivContent {
 }
 
 export class CheckBoxCreationFuncProvider extends ContentProviderWithInitialDivContent {
-    protected addCheckBoxToContent (): void {
-        let checkbox_field = new CheckBoxConstructor().createCheckBox()
+    protected addCheckBoxToContent (onactive_func: () => void = () => {}, ondisable_func: ()=> void = () => {}): void {
+        let checkbox_field = new CheckBoxConstructor(onactive_func, ondisable_func).createCheckBox()
         this.appendElementToContent(checkbox_field)
     }
 }
