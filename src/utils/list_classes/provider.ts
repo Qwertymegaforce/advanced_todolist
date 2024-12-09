@@ -12,6 +12,12 @@ class ContentFieldProvider {
         this.content.append(...elementArr)
     }
 
+
+    protected prependElementToContent(...elementArr: HTMLElement[]): void {
+        this.content.prepend(...elementArr)
+    }
+
+
     protected defineClassnameForContentRootElement(name_of_class: string): void {
         this.content.className = name_of_class
     }
@@ -28,18 +34,18 @@ class ContentFieldProvider {
         this.content.setAttribute(name, value)
     }
 
-    protected compoundElemenetsInSingleDiv(new_classname: string, insert_after_childnumber: number, ...elements_selectors: string[]): void {
+    protected compoundElemenetsInSingleDiv(new_classname: string, insert_after_childnumber: number, elements_selectors: string[]): void {
         let array_of_elements = this.formElementsArr(elements_selectors)
         let new_div = document.createElement('div')
         new_div.className = new_classname
-        
-        if(insert_after_childnumber == 0){
-            this.appendElementToContent(...array_of_elements)
+        new_div.append(...array_of_elements)
+
+        if(insert_after_childnumber == 0) {
+            this.prependElementToContent(new_div)
         }
 
-        else {
-            let element_afterwhich_append = this.searchForElementOnPosition(insert_after_childnumber)
-            element_afterwhich_append.append(...array_of_elements)
+        else if (insert_after_childnumber > this.content.childNodes.length) {
+            this.appendElementToContent(new_div)
         }
     }
 
@@ -58,21 +64,6 @@ class ContentFieldProvider {
         }
 
         return array_of_elements as HTMLElement[]
-    }
-
-    private searchForElementOnPosition(position: number): HTMLElement {
-        let element = this.content.firstChild!;
-
-        for (let i = 0; i < this.content.childNodes.length; i++) {
-            try {
-                element = element.nextSibling!
-            }
-            catch {
-                throw new Error('Given number higher than existing position')
-            }
-        }
-
-        return element as HTMLElement
     }
 }
 

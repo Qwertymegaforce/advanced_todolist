@@ -16,6 +16,11 @@ export class TodoConstructor extends CheckBoxCreationFuncProvider {
         this.addCheckBoxToContent()
         this.addTextField()
         this.addTimeMarker()
+        this.compoundElemenetsInSingleDiv(
+            "todo_task_text_checkbox_div flex", 
+            0, 
+            [".checkbox_div", ".displayed_todo_textfield"]
+        )
         return this.content
     }
 
