@@ -27,6 +27,53 @@ class ContentFieldProvider {
     protected setDataAttrForContent(name: string, value: string): void {
         this.content.setAttribute(name, value)
     }
+
+    protected compoundElemenetsInSingleDiv(new_classname: string, insert_after_childnumber: number, ...elements_selectors: string[]): void {
+        let array_of_elements = this.formElementsArr(elements_selectors)
+        let new_div = document.createElement('div')
+        new_div.className = new_classname
+        
+        if(insert_after_childnumber == 0){
+            this.appendElementToContent(...array_of_elements)
+        }
+
+        else {
+            let element_afterwhich_append = this.searchForElementOnPosition(insert_after_childnumber)
+            element_afterwhich_append.append(...array_of_elements)
+        }
+    }
+
+    private formElementsArr (elements_selectors: string[]): HTMLElement[] {
+        let array_of_elements = []
+
+        for (let selector of elements_selectors) {
+            try {
+                let element = this.content.querySelector(selector)!
+                array_of_elements.push(element)
+                this.content.removeChild(element)
+            }
+            catch {
+                throw new Error(`You passed a DOM selector but child wasn\`t found: ${selector}`)
+            }
+        }
+
+        return array_of_elements as HTMLElement[]
+    }
+
+    private searchForElementOnPosition(position: number): HTMLElement {
+        let element = this.content.firstChild!;
+
+        for (let i = 0; i < this.content.childNodes.length; i++) {
+            try {
+                element = element.nextSibling!
+            }
+            catch {
+                throw new Error('Given number higher than existing position')
+            }
+        }
+
+        return element as HTMLElement
+    }
 }
 
 
