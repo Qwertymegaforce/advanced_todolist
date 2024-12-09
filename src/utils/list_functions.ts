@@ -17,7 +17,7 @@ export function displayToDoCreationForm (): void {
     task_list_DOM.appendChild(form)
 }
 
-function updatePageTodoList(todo_list: toDo_task_type[]): void {
+export function updatePageTodoList(todo_list: toDo_task_type[]): void {
     task_list_DOM.innerHTML = ""
     for (let item of todo_list) {
         let new_task_dom = new TodoConstructor(item).createDisplayedTodo()

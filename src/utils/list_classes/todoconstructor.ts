@@ -1,5 +1,6 @@
 import type{ toDo_task_type } from "../../types/todo_types.js";
 import { CheckBoxCreationFuncProvider } from "./provider.js";
+import { changeStateOfTodo } from "./checkbox_func.js";
 
 
 export class TodoConstructor extends CheckBoxCreationFuncProvider {
@@ -13,7 +14,7 @@ export class TodoConstructor extends CheckBoxCreationFuncProvider {
     }
 
     public createDisplayedTodo(): HTMLElement {
-        this.addCheckBoxToContent()
+        this.addCheckBoxToContent(this.todo_obj.completed, changeStateOfTodo(this.todo_obj.id), changeStateOfTodo(this.todo_obj.id))
         this.addTextField()
         this.addTimeMarker()
         this.compoundElemenetsInSingleDiv(

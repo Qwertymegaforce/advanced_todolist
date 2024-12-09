@@ -92,13 +92,20 @@ export class CheckBoxConstructor extends ContentProviderWithInitialDivContent {
     protected ondisableFunc: () => void
 
     private checkmark_url = check_url
+    private initialstate: boolean;
 
-    constructor (onactive_func: () => void = () => {}, ondisable_func: ()=> void = () => {}) {
+    constructor (
+        initialstate: boolean = false, 
+        onactive_func: () => void = () => {}, 
+        ondisable_func: ()=> void = () => {}
+    ) {
         super()
-        this.defineClassnameForContentRootElement("checkbox_div")
+        this.defineClassnameForContentRootElement('checkbox_div')
         this.setDataAttrForContent("data-active", "false")
         this.onactiveFunc = onactive_func
         this.ondisableFunc = ondisable_func
+        this.initialstate = initialstate
+        this.setBgColor()
     }
 
     public createCheckBox(): HTMLDivElement {
@@ -112,6 +119,7 @@ export class CheckBoxConstructor extends ContentProviderWithInitialDivContent {
         let img = document.createElement('img')
         img.src = this.checkmark_url
         img.className = "checkbox_img"
+        img.style.opacity = this.initialstate? "1" : "0"
         return img
     }
 
@@ -134,11 +142,15 @@ export class CheckBoxConstructor extends ContentProviderWithInitialDivContent {
         })
     }
 
+    private setBgColor() {
+        this.content.style.backgroundColor = this.initialstate? "var(--purple-color)": "white"
+    }
+
 }
 
 export class CheckBoxCreationFuncProvider extends ContentProviderWithInitialDivContent {
-    protected addCheckBoxToContent (onactive_func: () => void = () => {}, ondisable_func: ()=> void = () => {}): void {
-        let checkbox_field = new CheckBoxConstructor(onactive_func, ondisable_func).createCheckBox()
+    protected addCheckBoxToContent (initialstate: boolean = false, onactive_func: () => void = () => {}, ondisable_func: ()=> void = () => {}): void {
+        let checkbox_field = new CheckBoxConstructor(initialstate, onactive_func, ondisable_func).createCheckBox()
         this.appendElementToContent(checkbox_field)
     }
 }
