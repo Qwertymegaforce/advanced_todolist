@@ -65,7 +65,15 @@ class InputConstructor extends ContentProviderWithInitialDivContent {
         input.autocomplete = "off"
         input.className = "creationform_input"
         input.id = "creationform_input_id"
+        this.linkInputWithDataStorage(input)
         this.appendElementToContent(input)
+    }
+
+
+    private linkInputWithDataStorage(input: HTMLInputElement): void {
+        input.addEventListener("input", (e: Event) => {
+            data_storage.setInputedData((e.target as HTMLInputElement).value);
+        })
     }
 
 }
