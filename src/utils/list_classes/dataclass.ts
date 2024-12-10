@@ -15,11 +15,7 @@ class DataStorage {
     public setInputedData(data: string): void {
         this.inputed_data = data
     }
-
-    public getInputedData(): string {
-        return this.inputed_data
-    }
-
+    
     public clearInputedData(): void {
         this.inputed_data = ""
     }
