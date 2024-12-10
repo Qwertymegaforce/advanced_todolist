@@ -28,6 +28,7 @@ export class TodoConstructor extends CheckBoxCreationFuncProvider {
     private addTextField(): void {
         let element_to_create = this.todo_obj.completed? "s" : "p"
         let text_field = document.createElement(element_to_create)
+        text_field.style.opacity = this.todo_obj.completed? "0.5" : "1"
         text_field.className = "displayed_todo_textfield"
         text_field.textContent = this.todo_obj.text
         this.appendElementToContent(text_field)
