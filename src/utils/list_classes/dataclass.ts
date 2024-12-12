@@ -20,6 +20,10 @@ class DataStorage {
         this.inputed_data = ""
     }
 
+    public getToDoTime(): void {
+        
+    }
+
 }
 
 
