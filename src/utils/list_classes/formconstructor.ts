@@ -97,22 +97,25 @@ class ButtonsConstructor extends ButtonProvider {
     private createConfirmButton(): HTMLButtonElement {
         let button = this.createBasicButtonWithIcon(check_circle_url)
         button.addEventListener('click', () => {
-            let input = this.parent_content.querySelector("#creationform_input_id") as HTMLInputElement
-            let text_content = input.value
-            let new_todo: toDo_task_type = {
-                id: data_storage.actual_unique_todo_id,
-                text: text_content,
-                completed: false,
-                time: {
-                    hours: 9,
-                    minutes: 10
-                }
-            }
+            let new_todo = this.formTodo()
+            addTodo(new_todo)
             task_list_DOM.removeChild(this.parent_content)
             addbutton_DOM.style.pointerEvents = "auto"
-            addTodo(new_todo)
         })
         return button
+    }
+
+
+    private formTodo(): toDo_task_type {
+        return {
+            id: data_storage.actual_unique_todo_id,
+            text: data_storage.inputed_data,
+            completed: false,
+            time: {
+                hours: 9,
+                minutes: 10
+            }
+        }
     }
 
     private createRejectButton(): HTMLButtonElement {
