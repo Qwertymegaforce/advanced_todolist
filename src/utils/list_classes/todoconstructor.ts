@@ -1,6 +1,7 @@
-import type{ toDo_task_type } from "../../types/todo_types.js";
+import type{ toDo_task_type, toDo_time_type } from "../../types/todo_types.js";
 import { CheckBoxCreationFuncProvider } from "./provider.js";
 import { changeStateOfTodo } from "./checkbox_func.js";
+
 
 
 export class TodoConstructor extends CheckBoxCreationFuncProvider {
@@ -37,15 +38,24 @@ export class TodoConstructor extends CheckBoxCreationFuncProvider {
     private addTimeMarker(): void {
         let time_marker = document.createElement('p')
         time_marker.className = "displayed_todo_timemarker"
-        let time_obj = this.todo_obj?.time
-        let content
-        if (time_obj) {
-            content = `${time_obj.hours}:${time_obj.minutes}`
-        }
-        else {
-            content = "ALL DAY"
-        }
+        let content = this.defineTimeContent(this.todo_obj?.time);
         time_marker.textContent = content
         this.appendElementToContent(time_marker)
+    }
+
+    private defineTimeContent(time_obj: toDo_time_type | string | undefined): string {
+        let content;
+        
+        if (typeof time_obj == "undefined") {
+            throw new Error("You haven`t passed type!")
+        }
+
+        else if (typeof time_obj != "string") {
+            content = `${time_obj.hours}:${time_obj.minutes}`
+        }
+
+        else content = time_obj
+
+        return content as string
     }
 }
