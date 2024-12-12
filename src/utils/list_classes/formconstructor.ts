@@ -98,9 +98,9 @@ class ButtonsConstructor extends ButtonProvider {
         let button = this.createBasicButtonWithIcon(check_circle_url)
         button.addEventListener('click', () => {
             let new_todo = this.formTodo()
-            addTodo(new_todo)
             task_list_DOM.removeChild(this.parent_content)
             addbutton_DOM.style.pointerEvents = "auto"
+            addTodo(new_todo)
         })
         return button
     }
