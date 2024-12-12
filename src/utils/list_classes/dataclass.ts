@@ -1,4 +1,4 @@
-import type { toDo_time } from "../../types/todo_types.js";
+import type { toDo_time_type } from "../../types/todo_types.js";
 
 class DataStorage {
     
@@ -7,7 +7,7 @@ class DataStorage {
     public inputed_data = ""
 
     private all_day = true;
-    private time!: toDo_time;
+    private time!: toDo_time_type;
 
     public changeStateOfFormDisplayed(): void {
         this.timeselection_form_is_displayed = !this.timeselection_form_is_displayed
@@ -25,7 +25,7 @@ class DataStorage {
         this.inputed_data = ""
     }
 
-    public getToDoTime(): string | toDo_time {
+    public getToDoTime(): string | toDo_time_type {
         if (this.all_day) return "ALL DAY"
         else return this.time
     }
