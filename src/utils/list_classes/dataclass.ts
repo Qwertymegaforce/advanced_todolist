@@ -1,11 +1,13 @@
+import type { toDo_time } from "../../types/todo_types.js";
+
 class DataStorage {
     
     public timeselection_form_is_displayed = false;
     public actual_unique_todo_id = 0;
     public inputed_data = ""
-    
-    private all_day = false;
-    private time!: object;
+
+    private all_day = true;
+    private time!: toDo_time;
 
     public changeStateOfFormDisplayed(): void {
         this.timeselection_form_is_displayed = !this.timeselection_form_is_displayed
@@ -23,8 +25,9 @@ class DataStorage {
         this.inputed_data = ""
     }
 
-    public getToDoTime(): void {
-
+    public getToDoTime(): string | toDo_time {
+        if (this.all_day) return "ALL DAY"
+        else return this.time
     }
 
 }
