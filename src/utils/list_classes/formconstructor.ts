@@ -111,10 +111,7 @@ class ButtonsConstructor extends ButtonProvider {
             id: data_storage.actual_unique_todo_id,
             text: data_storage.inputed_data,
             completed: false,
-            time: {
-                hours: 9,
-                minutes: 10
-            }
+            time: data_storage.getToDoTime()
         }
     }
 
