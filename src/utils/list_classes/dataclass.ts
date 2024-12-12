@@ -3,6 +3,8 @@ class DataStorage {
     public timeselection_form_is_displayed = false;
     public actual_unique_todo_id = 0;
     public inputed_data = ""
+    private all_day = false;
+    private time!: object;
 
     public changeStateOfFormDisplayed(): void {
         this.timeselection_form_is_displayed = !this.timeselection_form_is_displayed
@@ -21,7 +23,7 @@ class DataStorage {
     }
 
     public getToDoTime(): void {
-        
+
     }
 
 }
