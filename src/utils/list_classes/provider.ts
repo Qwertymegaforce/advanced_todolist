@@ -49,6 +49,33 @@ class ContentFieldProvider {
         }
     }
 
+    protected createElementAndAddProperties(element_name: string, properties: { [key: string]: string }): HTMLElement {
+        let element = this.tryToCreateElement(element_name)
+        this.tryToAddProperties(element, properties)
+        return element
+    }
+
+    private tryToCreateElement(element_name: string): HTMLElement {
+        let element;
+
+        try {
+            element = document.createElement(element_name)
+
+        }
+        catch {
+            throw new Error(`You are trying to create unexisiting DOM element ${element}`)
+        }
+
+        return element
+    }
+
+    private tryToAddProperties(element: HTMLElement, properties: { [key: string]: string }): void {
+
+        for(let item in properties) {
+            element.setAttribute(item, properties[item])
+        }
+    }
+
     private formElementsArr (elements_selectors: string[]): HTMLElement[] {
         let array_of_elements = []
 
