@@ -61,10 +61,11 @@ class InputConstructor extends ContentProviderWithInitialDivContent {
     }
 
     private addInputField(): void{
-        let input = document.createElement("input")
+        let input = this.createElementAndAddProperties("input", {
+            "class": "creationform_input",
+            "id": "creationform_input_id"
+        }) as HTMLInputElement
         input.autocomplete = "off"
-        input.className = "creationform_input"
-        input.id = "creationform_input_id"
         this.linkInputWithDataStorage(input)
         this.appendElementToContent(input)
     }
@@ -129,7 +130,7 @@ class ButtonsConstructor extends ButtonProvider {
 
 class TimeSelectionConstructor extends ButtonProvider {
 
-    public createTimeSelection() {
+    public createTimeSelection(): HTMLButtonElement {
         let button = this.createBasicButtonWithIcon(time_selection_url)
         this.setOnClickPopupEventTo(button)
         this.forceContentToBeEqualTo(button)
@@ -185,12 +186,34 @@ class TimeSelectionFormConstructor extends ContentProviderWithInitialDivContent 
     }
 
     private addTimeSelectionFieldToContent(): void {
-
+        let timeselection_field = new TimeSelectionFieldConstructor().createTimeselectionField()
+        this.appendElementToContent(timeselection_field)
     }
 
     private addAllDayPropertyToContent(): void {
         let all_day_div = new AllDayFieldConstructor().createAllDayDiv()
         this.appendElementToContent(all_day_div)
+    }
+}
+
+
+class TimeSelectionFieldConstructor extends ContentProviderWithInitialDivContent {
+    constructor() {
+        super()
+    }
+
+    public createTimeselectionField(): HTMLDivElement {
+        this.createSlider(23, ()=>{})
+        this.createSlider(59, ()=>{})
+        return this.content as HTMLDivElement
+    }
+
+
+    private createSlider(up_to_number: number, exec_func_after_selection: () => void): void {
+        let inner_wrapper = this.createElementAndAddProperties('div', {className: "inner_wrapper"})
+        
+
+        this.appendElementToContent(inner_wrapper)
     }
 }
 
