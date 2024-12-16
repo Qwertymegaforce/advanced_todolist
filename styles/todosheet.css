@@ -111,7 +111,7 @@
 .timeselection_form {
     position: absolute;
     top: 130%;
-    height: 100px;
+    height: 110px;
     width: 100%;
     box-shadow: 0px 0px 15px var(--super-faded-purple-color);
 }
@@ -135,4 +135,25 @@
 
 .todo_task_text_checkbox_div {
     gap: 0.3rem;
+}
+
+.outer_timeselection_field{
+    gap: 2rem;
+    height: 80px;
+    margin-bottom: 8px;
+    overflow: hidden;
+    justify-content: center;
+}
+
+.outer_slider_wrapper{
+    background-color: var(--super-faded-purple-color);
+    padding: 5px;
+    margin-top: 5px;
+    border-radius: 5px;
+}
+
+.selection_slider_wrapper{
+    font-family: "RobotoBold";
+    font-size: 1.5rem;
+    font-weight: 900;
 }
