@@ -31,10 +31,6 @@ img {
     display: none;
 }
 
-.d-block {
-    display: block;
-}
-
 .f-row {
     flex-direction: row;
 }
