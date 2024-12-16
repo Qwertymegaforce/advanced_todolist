@@ -200,20 +200,28 @@ class TimeSelectionFormConstructor extends ContentProviderWithInitialDivContent 
 class TimeSelectionFieldConstructor extends ContentProviderWithInitialDivContent {
     constructor() {
         super()
+        this.defineClassnameForContentRootElement('flex')
     }
 
     public createTimeselectionField(): HTMLDivElement {
-        this.createSlider(23, ()=>{})
-        this.createSlider(59, ()=>{})
+        this.createSlider(24, ()=>{})
+        this.createSlider(60, ()=>{})
         return this.content as HTMLDivElement
     }
 
 
     private createSlider(up_to_number: number, exec_func_after_selection: () => void): void {
-        let inner_wrapper = this.createElementAndAddProperties('div', {className: "inner_wrapper"})
-        
+        let outer_wrapper = this.createElementAndAddProperties('div', {className: "outer_slider_wrapper"})
+        let inner_wrapper = this.createElementAndAddProperties('div', {className: "inner_slider_wrapper flex f-column"})
 
-        this.appendElementToContent(inner_wrapper)
+        for(let i = 0; i < up_to_number; i++) {
+            let selection_slider_div = this.createElementAndAddProperties('div', {className: "selection_slider_wrapper"})
+            selection_slider_div.textContent = `${i}`
+            inner_wrapper.appendChild(selection_slider_div)
+        }
+
+        outer_wrapper.appendChild(inner_wrapper)
+        this.appendElementToContent(outer_wrapper)
     }
 }
 
