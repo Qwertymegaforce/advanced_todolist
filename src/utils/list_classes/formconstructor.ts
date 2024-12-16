@@ -151,11 +151,11 @@ class TimeSelectionConstructor extends ButtonProvider {
     }
 
     private displayTimeSelectionForm(form: HTMLDivElement): void {
-        this.replaceClassnameOf(form, "d-none", "d-block")
+        this.replaceClassnameOf(form, "d-none", "flex f-column")
     }
 
     private hideTimeSelectionForm(form: HTMLDivElement): void {
-        this.replaceClassnameOf(form, "d-block", "d-none")
+        this.replaceClassnameOf(form, "flex f-column", "d-none")
     }
 
     private replaceClassnameOf(form: HTMLDivElement, old_classname: string, new_classname: string): void {
@@ -200,7 +200,7 @@ class TimeSelectionFormConstructor extends ContentProviderWithInitialDivContent 
 class TimeSelectionFieldConstructor extends ContentProviderWithInitialDivContent {
     constructor() {
         super()
-        this.defineClassnameForContentRootElement('flex')
+        this.defineClassnameForContentRootElement('outer_timeselection_field flex')
     }
 
     public createTimeselectionField(): HTMLDivElement {
@@ -211,11 +211,11 @@ class TimeSelectionFieldConstructor extends ContentProviderWithInitialDivContent
 
 
     private createSlider(up_to_number: number, exec_func_after_selection: () => void): void {
-        let outer_wrapper = this.createElementAndAddProperties('div', {className: "outer_slider_wrapper"})
-        let inner_wrapper = this.createElementAndAddProperties('div', {className: "inner_slider_wrapper flex f-column"})
+        let outer_wrapper = this.createElementAndAddProperties('div', {class: "outer_slider_wrapper"})
+        let inner_wrapper = this.createElementAndAddProperties('div', {class: "inner_slider_wrapper flex f-column"})
 
         for(let i = 0; i < up_to_number; i++) {
-            let selection_slider_div = this.createElementAndAddProperties('div', {className: "selection_slider_wrapper"})
+            let selection_slider_div = this.createElementAndAddProperties('div', {class: "selection_slider_wrapper flex f-center"})
             selection_slider_div.textContent = `${i}`
             inner_wrapper.appendChild(selection_slider_div)
         }
