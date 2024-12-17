@@ -152,8 +152,15 @@
     border-radius: 5px;
 }
 
+.outer_timeselection_field .inner_slider_wrapper {
+    overflow: hidden;
+}
+
 .selection_slider_wrapper{
+    padding-top: 5px;
+    cursor: pointer;
+    user-select: none;
     font-family: "RobotoBold";
-    font-size: 1.5rem;
+    font-size: 3.1rem;
     font-weight: 900;
 }
