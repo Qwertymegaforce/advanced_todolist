@@ -158,7 +158,7 @@
 
 .selection_slider_wrapper{
     padding-top: 5px;
-    cursor: pointer;
+    cursor: n-resize;
     user-select: none;
     font-family: "RobotoBold";
     font-size: 3.1rem;
