@@ -5,7 +5,8 @@
     font-family: "Roboto";
     --purple-color: rgb(115, 128, 215);
     --faded-purple-color: rgba(115, 128, 215, 0.7);
-    --super-faded-purple-color: rgba(115, 128, 215, 0.2)
+    --super-faded-purple-color: rgba(115, 128, 215, 0.2);
+    scroll-behavior: smooth;
 }
 
 html, body, .main_wrapper {
