@@ -7,7 +7,10 @@ class DataStorage {
     public inputed_data = ""
 
     private all_day = true;
-    private time!: toDo_time_type;
+    private time: toDo_time_type = {
+        minutes: 0,
+        hours: 0
+    };
 
     public changeStateOfFormDisplayed(): void {
         this.timeselection_form_is_displayed = !this.timeselection_form_is_displayed
@@ -23,6 +26,10 @@ class DataStorage {
     
     public clearInputedData(): void {
         this.inputed_data = ""
+    }
+
+    public setTime(time_property: keyof toDo_time_type, value: number): void {
+        this.time[time_property] = value
     }
 
     public getToDoTime(): string | toDo_time_type {
