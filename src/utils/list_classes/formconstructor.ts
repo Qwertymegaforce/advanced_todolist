@@ -213,15 +213,33 @@ class TimeSelectionFieldConstructor extends ContentProviderWithInitialDivContent
     private createSlider(up_to_number: number, exec_func_after_selection: () => void): void {
         let outer_wrapper = this.createElementAndAddProperties('div', {class: "outer_slider_wrapper"})
         let inner_wrapper = this.createElementAndAddProperties('div', {class: "inner_slider_wrapper flex f-column"})
-
+        
         for(let i = 0; i < up_to_number; i++) {
             let selection_slider_div = this.createElementAndAddProperties('div', {class: "selection_slider_wrapper flex f-center"})
             selection_slider_div.textContent = `${i}`
+            
             inner_wrapper.appendChild(selection_slider_div)
         }
-
+        
+        this.addSlidingLogic(inner_wrapper, up_to_number)
         outer_wrapper.appendChild(inner_wrapper)
         this.appendElementToContent(outer_wrapper)
+    }
+
+
+    private addSlidingLogic(slider_element: HTMLElement, max_sliding_number: number): void {
+        let counter = 0;
+        slider_element.addEventListener("wheel", (event)=>{
+            counter = this.setSlidingCounter(counter, event.deltaY, max_sliding_number)
+        })
+    }
+
+    private setSlidingCounter(prev_counter: number, delta_Y_wheel_event: number, max_sliding_number: number): number {
+        let delta = delta_Y_wheel_event > 0? 1 : - 1
+            if (prev_counter + delta >= 0 && prev_counter + delta < max_sliding_number) {
+                prev_counter += delta
+            }
+        return prev_counter
     }
 }
 
