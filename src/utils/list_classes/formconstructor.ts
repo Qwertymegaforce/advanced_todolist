@@ -231,6 +231,7 @@ class TimeSelectionFieldConstructor extends ContentProviderWithInitialDivContent
         let counter = 0;
         slider_element.addEventListener("wheel", (event)=>{
             counter = this.setSlidingCounter(counter, event.deltaY, max_sliding_number)
+            this.translateSlidingElementOnYAxis(slider_element, counter)
         })
     }
 
@@ -240,6 +241,11 @@ class TimeSelectionFieldConstructor extends ContentProviderWithInitialDivContent
                 prev_counter += delta
             }
         return prev_counter
+    }
+
+    private translateSlidingElementOnYAxis(slider_element: HTMLElement, number_of_steps: number) {
+        let offset = slider_element.offsetHeight/slider_element.children.length;
+        slider_element.style.transform = `translateY(${number_of_steps * -offset}px)`
     }
 }
 
