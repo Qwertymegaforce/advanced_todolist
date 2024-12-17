@@ -6,7 +6,7 @@ class DataStorage {
     public actual_unique_todo_id = 0;
     public inputed_data = ""
 
-    private all_day = true;
+    private all_day = false;
     private time: toDo_time_type = {
         minutes: 0,
         hours: 0
@@ -26,6 +26,11 @@ class DataStorage {
     
     public clearInputedData(): void {
         this.inputed_data = ""
+        this.time = {
+            minutes: 0,
+            hours: 0
+        }
+        this.all_day = false
     }
 
     public setTime(time_property: keyof toDo_time_type, value: number): void {
@@ -34,7 +39,8 @@ class DataStorage {
 
     public getToDoTime(): string | toDo_time_type {
         if (this.all_day) return "ALL DAY"
-        else return this.time
+        else return {...this.time}
+            
     }
 
 }
