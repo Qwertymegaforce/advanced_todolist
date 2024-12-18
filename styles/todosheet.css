@@ -154,6 +154,10 @@
     overflow: hidden;
 }
 
+.inner_slider_wrapper {
+    transition: all 0.25s;
+}
+
 .selection_slider_wrapper{
     padding: 5px;
     cursor: n-resize;
