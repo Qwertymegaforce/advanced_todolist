@@ -1,6 +1,7 @@
 import type{ toDo_task_type, toDo_time_type } from "../../types/todo_types.js";
 import { CheckBoxCreationFuncProvider } from "./provider.js";
 import { changeStateOfTodo } from "./checkbox_func.js";
+import { addZeroAtTheStartIfNeeded } from "./util_functions.js";
 
 
 
@@ -51,7 +52,9 @@ export class TodoConstructor extends CheckBoxCreationFuncProvider {
         }
 
         else if (typeof time_obj != "string") {
-            content = `${time_obj.hours}:${time_obj.minutes}`
+            let properHours = addZeroAtTheStartIfNeeded(time_obj.hours)
+            let properMinutes = addZeroAtTheStartIfNeeded(time_obj.minutes)
+            content = `${properHours}:${properMinutes}`
         }
 
         else content = time_obj
