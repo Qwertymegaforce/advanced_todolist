@@ -124,6 +124,7 @@ class ButtonsConstructor extends ButtonProvider {
         button.addEventListener('click', () => {
             addbutton_DOM.style.pointerEvents = "auto"
             task_list_DOM.removeChild(this.parent_content)
+            data_storage.clearInputedData()
         })
         return button
     }
