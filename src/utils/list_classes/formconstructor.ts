@@ -102,6 +102,7 @@ class ButtonsConstructor extends ButtonProvider {
             let new_todo = this.formTodo()
             addbutton_DOM.style.pointerEvents = "auto"
             task_list_DOM.removeChild(this.parent_content)
+            data_storage.clearInputedData()
             addTodo(new_todo)
         })
         return button
