@@ -115,22 +115,19 @@ export class ContentProviderWithInitialDivContent extends ContentFieldProvider{
 
 export class CheckBoxConstructor extends ContentProviderWithInitialDivContent {
 
-    protected onactiveFunc: () => void
-    protected ondisableFunc: () => void
+    protected onclick_func: (is_active: boolean) => void
 
     private checkmark_url = check_url
     private initialstate: boolean;
 
     constructor (
         initialstate: boolean = false, 
-        onactive_func: () => void = () => {}, 
-        ondisable_func: ()=> void = () => {}
+        onclick_func: (is_active: boolean) => void = () => {}, 
     ) {
         super()
         this.defineClassnameForContentRootElement('checkbox_div')
         this.setDataAttrForContent("data-active", "false")
-        this.onactiveFunc = onactive_func
-        this.ondisableFunc = ondisable_func
+        this.onclick_func = onclick_func
         this.initialstate = initialstate
         this.setBgColor()
     }
@@ -154,18 +151,17 @@ export class CheckBoxConstructor extends ContentProviderWithInitialDivContent {
         this.content.addEventListener("click", () => {
             let is_active = (this.content.dataset.active === "true")
             
-            if (!is_active) {
-                this.onactiveFunc()
+            if (!is_active) {  
                 img.style.opacity = "1"
                 this.content.style.backgroundColor = "var(--purple-color)"
                 this.setDataAttrForContent("data-active", "true")
             }
             else {
-                this.ondisableFunc()
                 img.style.opacity = "0"
                 this.content.style.backgroundColor = "white"
                 this.setDataAttrForContent("data-active", "false")
             }
+            this.onclick_func(is_active)
         })
     }
 
@@ -176,8 +172,8 @@ export class CheckBoxConstructor extends ContentProviderWithInitialDivContent {
 }
 
 export class CheckBoxCreationFuncProvider extends ContentProviderWithInitialDivContent {
-    protected addCheckBoxToContent (initialstate: boolean = false, onactive_func: () => void = () => {}, ondisable_func: ()=> void = () => {}): void {
-        let checkbox_field = new CheckBoxConstructor(initialstate, onactive_func, ondisable_func).createCheckBox()
+    protected addCheckBoxToContent (initialstate: boolean = false, onactive_func: (state: boolean) => void = () => {}): void {
+        let checkbox_field = new CheckBoxConstructor(initialstate, onactive_func).createCheckBox()
         this.appendElementToContent(checkbox_field)
     }
 }

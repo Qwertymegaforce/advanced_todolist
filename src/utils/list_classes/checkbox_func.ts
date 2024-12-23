@@ -3,7 +3,7 @@ import { updatePageTodoList } from "../list_functions.js";
 
 export function changeStateOfTodo(id: number) {
 
-    return () => {
+    return (state: boolean) => {
         try {
             todo_list[id].completed = !todo_list[id].completed
         }

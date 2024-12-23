@@ -264,7 +264,7 @@ class AllDayFieldConstructor extends CheckBoxCreationFuncProvider {
     }
 
     public createAllDayDiv(): HTMLDivElement {
-        this.addCheckBoxToContent()
+        this.addCheckBoxToContent(false, () => data_storage.changeAllDay())
         this.addSignAllDayToContent()
         return this.content as HTMLDivElement
     }

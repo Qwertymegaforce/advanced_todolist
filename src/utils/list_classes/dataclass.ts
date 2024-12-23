@@ -37,6 +37,10 @@ class DataStorage {
         this.time[time_property] = value
     }
 
+    public changeAllDay(){
+        this.all_day = !this.all_day
+    }
+
     public getToDoTime(): string | toDo_time_type {
         if (this.all_day) return "ALL DAY"
         else return {...this.time}

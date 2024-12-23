@@ -16,7 +16,7 @@ export class TodoConstructor extends CheckBoxCreationFuncProvider {
     }
 
     public createDisplayedTodo(): HTMLElement {
-        this.addCheckBoxToContent(this.todo_obj.completed, changeStateOfTodo(this.todo_obj.id), changeStateOfTodo(this.todo_obj.id))
+        this.addCheckBoxToContent(this.todo_obj.completed, changeStateOfTodo(this.todo_obj.id))
         this.addTextField()
         this.addTimeMarker()
         this.compoundElemenetsInSingleDiv(
