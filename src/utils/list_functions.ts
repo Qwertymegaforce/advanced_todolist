@@ -18,8 +18,9 @@ export function displayToDoCreationForm (): void {
 }
 
 export function updatePageTodoList(todo_list: toDo_task_type[]): void {
+    let sorted_todos_list = sortTodos(todo_list)
     task_list_DOM.innerHTML = ""
-    for (let item of todo_list) {
+    for (let item of sorted_todos_list) {
         let new_task_dom = new TodoConstructor(item).createDisplayedTodo()
         task_list_DOM.appendChild(new_task_dom)
     }
@@ -33,6 +34,33 @@ export function updateTaskCounter(): void {
     if (number_of_tasks > 1 || number_of_tasks == 0) new_text_content += "S"
     task_counter_DOM.textContent = new_text_content
 }
+
+function sortTodos(todo_list: toDo_task_type[]) {
+    todo_list.sort((a, b)=>{
+
+        if(a.time == b.time) return 0
+          
+        let next_check = compareAllDays(a, b)
+        if(typeof next_check != undefined) return next_check as number
+
+        return 0
+        
+    })
+    
+    return [...todo_list]
+}
+
+
+function compareAllDays(a: toDo_task_type, b: toDo_task_type){
+    if(typeof a.time == "string") {
+        return -1
+    }
+    else if (typeof b.time == "string") {
+        return 1
+    }
+    else return undefined
+}
+
 
 function createToDoForm(): HTMLDivElement {
     let form = new FormConstructor().createForm()
