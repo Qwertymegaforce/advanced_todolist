@@ -5,7 +5,11 @@ export function changeStateOfTodo(id: number) {
 
     return (state: boolean) => {
         try {
-            todo_list[id].completed = !todo_list[id].completed
+            todo_list.map((value) => {
+                if(value.id == id) {
+                    value.completed = !value.completed
+                }
+            })
         }
         catch {
             throw new Error("Wrong ID")
