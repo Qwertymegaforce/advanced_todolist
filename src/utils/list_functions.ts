@@ -1,14 +1,17 @@
 import type { toDo_task_type } from "../types/todo_types.js";
-import { todo_list } from "./vars.js";
+import { todo_list, today_date_obj} from "./vars.js";
 import { task_list_DOM, task_counter_DOM, addbutton_DOM} from "./dom_vars.js";
 import { TodoConstructor } from "./list_classes/todoconstructor.js";
 import { FormConstructor } from "./list_classes/formconstructor.js";
 import { data_storage } from "./list_classes/dataclass.js";
+import { getLSKeyFromDateObj } from "./etc/sys_func.js";
 
 
 export function addTodo(toDo_obj: toDo_task_type): void {
     todo_list.push(toDo_obj)
     data_storage.updateActualUniqueTodoId()
+    let key = getLSKeyFromDateObj(today_date_obj)
+    localStorage.setItem(key, JSON.stringify(todo_list))
     updatePageTodoList(todo_list)
 }
 
