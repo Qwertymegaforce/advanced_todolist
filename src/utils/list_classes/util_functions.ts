@@ -24,8 +24,3 @@ function updateTodosIfLocalStorageHasData() {
         updatePageTodoList(todo_list)
     }
 }
-
-
-export function arrayConsistOfTodos(arr: unknown[]): arr is toDo_task_type[] {
-    return true
-}
