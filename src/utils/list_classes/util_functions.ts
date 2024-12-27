@@ -2,7 +2,6 @@ import { setDate, setDayOfWeek } from "../setdate_functions.js"
 import { updateTaskCounter } from "../list_functions.js"
 import { updatePageTodoList } from "../list_functions.js"
 import { todo_list } from "../vars.js"
-import { toDo_task_type } from "../../types/todo_types.js"
 
 
 export function addZeroAtTheStartIfNeeded(integer: number): string {
