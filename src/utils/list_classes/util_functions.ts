@@ -15,11 +15,11 @@ export function updateWholePage(current_date: Date): void {
     setDate(current_date)
     setDayOfWeek(current_date)
     updateTaskCounter()
-    updateTodosIfLocalStorageHasData(current_date)
+    updateTodosIfLocalStorageHasData()
 }
 
 
-function updateTodosIfLocalStorageHasData(current_date: Date) {
+function updateTodosIfLocalStorageHasData() {
     if(typeof todo_list == "object") {
         updatePageTodoList(todo_list)
     }
