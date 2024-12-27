@@ -1,4 +1,5 @@
 import type { toDo_time_type } from "../../types/todo_types.js";
+import { getLSKeyFromDateObj } from "../etc/sys_func.js";
 
 class DataStorage {
     
@@ -43,8 +44,17 @@ class DataStorage {
 
     public getToDoTime(): string | toDo_time_type {
         if (this.all_day) return "ALL DAY"
-        else return {...this.time}
-            
+        else return {...this.time}    
+    }
+
+    public loadUniqueIdFromLS(date_obj: Date){
+        let key = getLSKeyFromDateObj(date_obj)
+        let data = localStorage.getItem(key)
+        
+        if(data) {
+            let decoded_data = JSON.parse(data)
+            this.actual_unique_todo_id = decoded_data[decoded_data.length - 1].id + 1
+        }
     }
 
 }
